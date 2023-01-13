@@ -1,4 +1,5 @@
 # startup
 
 I am modifying this for the first assignment!
-I am modifying this again from GitHub and VSCode.
+
+GitHub assignment: I learned how to resolve merge conflicts!
