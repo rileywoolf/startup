@@ -8,7 +8,7 @@ GitHub assignment: I learned how to resolve merge conflicts!
 
 (elevator pitch)
 
-{design image}
+![wireframe of page design](bibliobibuli-wireframe.png)
 
 
 Key Features
