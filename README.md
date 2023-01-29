@@ -4,7 +4,9 @@ I am modifying this for the first assignment!
 
 GitHub assignment: I learned how to resolve merge conflicts!
 
-http://3.139.87.238/
+## Server IP Address
+
+http://18.216.215.40/
 
 # design
 
