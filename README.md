@@ -4,9 +4,13 @@ I am modifying this for the first assignment!
 
 GitHub assignment: I learned how to resolve merge conflicts!
 
-## Server IP Address
+## Server IP Address (EC2)
 
 http://18.216.215.40/
+
+## Server Domain (Route 53)
+
+http://riley260.click/
 
 # design
 
