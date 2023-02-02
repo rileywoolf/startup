@@ -1,16 +1,5 @@
 # startup
 
-I am modifying this for the first assignment!
-
-GitHub assignment: I learned how to resolve merge conflicts!
-
-## Server IP Address (EC2)
-
-http://18.216.215.40/
-
-## Server Domain (Route 53)
-
-http://riley260.click/
 
 # design
 
@@ -26,3 +15,20 @@ Did you make a new year's resolution to read more books but aren't quite sure wh
 * rate a book and write a review
 * see the book reviews of others
 * reviews and currently reading are persistently stored
+
+## Server IP Address (EC2)
+
+http://18.216.215.40/
+
+## Server Domain (Route 53)
+
+http://riley260.click/
+
+### Caddy/HTTPS
+Made my web server communication secure through Caddy. 
+
+### Github Assignment
+
+I am modifying this for the first assignment!
+
+GitHub assignment: I learned how to resolve merge conflicts!
