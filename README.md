@@ -22,7 +22,7 @@ http://18.216.215.40/
 
 ## Server Domain (Route 53)
 
-http://riley260.click/
+https://riley260.click/
 
 ### Caddy/HTTPS
 Made my web server communication secure through Caddy. 
