@@ -36,3 +36,6 @@ GitHub assignment: I learned how to resolve merge conflicts!
 ### Simon HTML Assignment
 - One of the main things that this assignment taught me was how to add hyperlinks to other pages on the website so that you can click on the link to see a different page. 
 - Another thing that I learned on this assignment was how to use a header, main, and footer to set up a logical structure for the webpage. 
+
+### CSS
+- CSS Practice assignment: learned about selectors, declarations, fonts, and animations. 
