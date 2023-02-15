@@ -39,3 +39,4 @@ GitHub assignment: I learned how to resolve merge conflicts!
 
 ### CSS
 - CSS Practice assignment: learned about selectors, declarations, fonts, and animations. 
+- CSS Flex: to make a body element a responsive flexbox, set the display property to flex; flex: 1 means that it will get one fractional unit of growth, while flex: 0 80px won't allow that element to grow and will give it a starting height of 80pixels
