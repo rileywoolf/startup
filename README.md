@@ -39,4 +39,9 @@ GitHub assignment: I learned how to resolve merge conflicts!
 
 ### CSS
 - CSS Practice assignment: learned about selectors, declarations, fonts, and animations. 
-- CSS Flex: to make a body element a responsive flexbox, set the display property to flex; flex: 1 means that it will get one fractional unit of growth, while flex: 0 80px won't allow that element to grow and will give it a starting height of 80pixels
+- CSS Flex: to make a body element a responsive flexbox, set the display property to flex; `flex: 1` means that it will get one fractional unit of growth, while `flex: 0 80px` won't allow that element to grow and will give it a starting height of 80pixels
+
+### Simon CSS Assignment
+- To show that a certain navigation bar item is selected, set the class of that link to "nav-link active" instead of just "nav-link"
+- When you need to set multiple aspects of the margin to different things, you can just do `margin: top right bottom left` instead of assiging each value of margin in a separate line
+- Using the `!important` rule overrides all previous styling rules for that property on that element
