@@ -58,7 +58,7 @@ Made my web server communication secure through Caddy.
 
 ## JavaScript
 
-## JavaScript Console
+### JavaScript Console
 - log
   - `console.log('MSG');`
   - create formatted messages (i.e. `console.log('%s', 'MSG');`
@@ -72,7 +72,7 @@ console.timeEnd('NAME');
 ```
 - `count` is used to see how many times a block of code is called 
 
-## Type and Construct
+### Type and Construct
 - declaring variables
   - `let` allows you to change the value of the variable
   - `const` causes an error if you try to change it
