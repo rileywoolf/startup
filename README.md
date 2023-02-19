@@ -16,11 +16,11 @@ Did you make a new year's resolution to read more books but aren't quite sure wh
 * see the book reviews of others
 * reviews and currently reading are persistently stored
 
-## Server IP Address (EC2)
+### Server IP Address (EC2)
 
 http://18.216.215.40/
 
-## Server Domain (Route 53)
+### Server Domain (Route 53)
 
 https://riley260.click/
 
@@ -32,11 +32,13 @@ GitHub assignment: I learned how to resolve merge conflicts!
 ### Caddy/HTTPS
 Made my web server communication secure through Caddy. 
 
+## HTML
+
 ### Simon HTML Assignment
 - One of the main things that this assignment taught me was how to add hyperlinks to other pages on the website so that you can click on the link to see a different page. 
 - Another thing that I learned on this assignment was how to use a header, main, and footer to set up a logical structure for the webpage. 
 
-### CSS
+## CSS
 - CSS Practice assignment: learned about selectors, declarations, fonts, and animations. 
 - CSS Flex: to make a body element a responsive flexbox, set the display property to flex; `flex: 1` means that it will get one fractional unit of growth, while `flex: 0 80px` won't allow that element to grow and will give it a starting height of 80pixels
 
@@ -53,3 +55,43 @@ Made my web server communication secure through Caddy.
   - Monospaced for code examples or text that need alignment
   - [See Google's open font collection](https://fonts.google.com/about)
 - Some icon packages: [Font Awesome](https://fontawesome.com/), [Bootstrap Icons](https://icons.getbootstrap.com/), [Material Icons](http://google.github.io/material-design-icons/), [Flat Color Icons](https://github.com/icons8/flat-color-icons), [Ant Design Icons](https://github.com/ant-design/ant-design-icons)
+
+## JavaScript
+
+## JavaScript Console
+- log
+  - `console.log('MSG');`
+  - create formatted messages (i.e. `console.log('%s', 'MSG');`
+  - specify CSS declarations too: `console.log(%c MSG', 'font-size:1.5em; color:green;');`
+- timers allow you to see how long a piece of code runs for
+```
+console.time('NAME');
+// code here
+console.timeEnd('NAME');
+// OUTPUT: NAME: 349.49 ms
+```
+- `count` is used to see how many times a block of code is called 
+
+## Type and Construct
+- declaring variables
+  - `let` allows you to change the value of the variable
+  - `const` causes an error if you try to change it
+- types
+  - `Null`: a var that has not been assigned a value
+  - `Undefined`: a var that has not been defined
+  - `Boolean`: true or false
+  - `Number`: 64-bit signed number
+  - `BigInt`: number of arbitrary magnitude
+  - `String`: textual sequence of characters
+  - `Symbol`: a unique value
+- common operators
+  - numbers: + - * / === (for equality)
+  - strings: + (concatenation) and === (equality)
+- type conversions
+  - since JavaScript is a weakly typed language, a variable can change type when assigned a new value or converted based on the context it used in
+  - some funny business happens using `==`, so use the STRICT equality and inequality operators (`===` and `!==`)
+- conditionals
+  - ternary operator: `CONDITION ? TRUE EXPR : FALSE EXPR;`
+- loops (along with for, do while, and while)
+  - `for in`: iterates over an object's property names 
+  - `for of`: iterates over an iterable's property values (array, map, set, etc)
