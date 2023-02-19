@@ -44,3 +44,12 @@ Made my web server communication secure through Caddy.
 - To show that a certain navigation bar item is selected, set the class of that link to "nav-link active" instead of just "nav-link"
 - When you need to set multiple aspects of the margin to different things, you can just do `margin: top right bottom left` instead of assiging each value of margin in a separate line
 - Using the `!important` rule overrides all previous styling rules for that property on that element
+
+### UX Design
+- Tools to help choose a color palette: [Paletton](https://paletton.com/) and [Adobe](https://color.adobe.com/create/color-wheel)
+- Fonts
+  - San Serif for buttons, navigation links, body text
+  - Serif for paragraph headings
+  - Monospaced for code examples or text that need alignment
+  - [See Google's open font collection](https://fonts.google.com/about)
+- Some icon packages: [Font Awesome](https://fontawesome.com/), [Bootstrap Icons](https://icons.getbootstrap.com/), [Material Icons](http://google.github.io/material-design-icons/), [Flat Color Icons](https://github.com/icons8/flat-color-icons), [Ant Design Icons](https://github.com/ant-design/ant-design-icons)
