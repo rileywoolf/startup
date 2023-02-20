@@ -35,6 +35,25 @@ menu .nav-item {
   padding: 0 0.3em;
 }
 
+.about-descr {
+  font-size: small;
+  width: 400px;
+  margin: 10px 0 0 10px;
+}
+
+.about-photo {
+  background-color: #f2f5ff;
+  padding: 30px;
+  border-radius: 25px;
+}
+
+.about-text {
+  width: 550px;
+  background-color: #f2f5ff;
+  padding: 30px;
+  border-radius: 25px;
+}
+
 .form-label {
   float: right;
 }
@@ -43,6 +62,7 @@ menu .nav-item {
   background-color: #f2f5ff;
   padding: 30px;
   border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .navbar {
