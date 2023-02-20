@@ -1,0 +1,66 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  flex: 0 30px;
+  background-color: #52576e;
+}
+
+footer a {
+  float: right;
+}
+
+header {
+  flex: 0 80px;
+}
+
+main {
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+menu {
+  flex: 1;
+  display: flex;
+  flex-direction: row !important;
+  list-style-type: none;
+}
+
+menu .nav-item {
+  padding: 0 0.3em;
+}
+
+.form-label {
+  float: right;
+}
+
+.login {
+  background-color: #f2f5ff;
+  padding: 30px;
+  border-radius: 25px;
+}
+
+.navbar {
+  background-color: #9ea3ba;
+}
+
+.navbar-brand {
+  padding-left: 1em;
+  /* add this if you want a line underneath the title*/
+  /* border-bottom: solid rgb(182, 182, 182) thin; */
+}
+
+.slogan {
+  color: white;
+  flex: 0 310px;
+  margin-top: 20px;
+}
+
+.submit {
+  float: right;
+}
