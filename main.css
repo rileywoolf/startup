@@ -12,6 +12,10 @@ footer a {
   float: right;
 }
 
+h2 {
+  margin-bottom: 40px !important;
+}
+
 header {
   flex: 0 80px;
 }
@@ -42,7 +46,7 @@ menu .nav-item {
 }
 
 .about-photo {
-  background-color: #f2f5ff;
+  background-color: #d9e1ff;
   padding: 30px;
   border-radius: 25px;
 }
@@ -52,6 +56,23 @@ menu .nav-item {
   background-color: #f2f5ff;
   padding: 30px;
   border-radius: 25px;
+}
+
+.current-item {
+  font-size: large;
+  background-color: #d9e1ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.currently-reading {
+  flex: 1;
+  background-color: #f2f5ff;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 25px;
+  margin: 0 20px 0 20px;
 }
 
 .form-label {
@@ -71,8 +92,28 @@ menu .nav-item {
 
 .navbar-brand {
   padding-left: 1em;
-  /* add this if you want a line underneath the title*/
-  /* border-bottom: solid rgb(182, 182, 182) thin; */
+}
+
+.rating {
+  font-size: 25px;
+}
+
+.reviews {
+  flex: 3;
+  margin-left: 75px;
+  background-color: #f2f5ff;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.review-container {
+  display: grid !important;
+  grid-template-columns: auto auto;
+  margin: 10px;
+  row-gap: 15px;
+  background-color: #d9e1ff;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .slogan {
@@ -83,4 +124,22 @@ menu .nav-item {
 
 .submit {
   float: right;
+}
+
+.username {
+  font-weight: bold;
+  font-style: italic;
+  align-self: end;
+}
+
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
 }
