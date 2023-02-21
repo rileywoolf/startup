@@ -77,6 +77,20 @@ menu .nav-item {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.home-container {
+  display: grid !important;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+.home-item {
+  background-color: #d9e1ff;
+  border-radius: 7px;
+  padding: 20px;
+}
+
 .login {
   background-color: #f2f5ff;
   padding: 30px;
