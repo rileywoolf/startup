@@ -89,6 +89,9 @@ menu .nav-item {
   background-color: #d9e1ff;
   border-radius: 7px;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login {
