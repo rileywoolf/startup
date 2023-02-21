@@ -49,6 +49,7 @@ menu .nav-item {
   background-color: #d9e1ff;
   padding: 30px;
   border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .about-text {
@@ -73,10 +74,7 @@ menu .nav-item {
   padding-bottom: 40px;
   border-radius: 25px;
   margin: 0 20px 0 20px;
-}
-
-.form-label {
-  float: right;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .login {
@@ -104,6 +102,7 @@ menu .nav-item {
   background-color: #f2f5ff;
   padding: 20px;
   border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .review-container {
