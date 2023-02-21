@@ -4,7 +4,7 @@
 
 Did you make a new year's resolution to read more books but aren't quite sure what to read? Do you love reading but need a place to keep track of your incredibly important opinions of the books you've read? We have just the app for you! Bibliobibuli allows you to share what book you are currently reading as well as see what others are reading. You can write reviews of the books you have read and see what others are saying about the books they've read. Get ready to read!
 
-![wireframe of page design](bibliobibuli-wireframe.png)
+![wireframe of page design](reources/bibliobibuli-wireframe.png)
 
 ### Key Features
 
