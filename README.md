@@ -182,7 +182,19 @@ const obj = {
 
 ### Regular Expressions
 
+- regex support built into js
+- can either use RegEx class constructor (`new RegEx('ab*', 'i')`) or regex literal (`/ab*/i`)
+- `/pattern/modifiers;`
+  - g: perform a global match (don't just stop after first match)
+  - i: case-insensitive match
+  - m: multiline matching
+
 ### Rest and Spread
+
+- rest allows you to call a parameter with any number of parameters and it puts the parameters that aren't directly assigned to a parameter in an array
+  - `function foo(param1, param2, ...others){...}`
+- spread is the opposite of rest, it takes an object that is iterable and expands it to a function's params
+  - `func(...[1, 2])` this will call func with a parameter of 1 and parameter of 2
 
 ### Destructuring
 
