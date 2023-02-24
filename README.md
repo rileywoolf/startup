@@ -198,4 +198,17 @@ const obj = {
 
 ### Destructuring
 
+- pulls individual items out of an existing one
+- can be done with arrays or objects
+- with an array a: `[b, c] = a;` this line sets b to the first element and c to the second
+  - combine multiple items from the original object using rest
+- similar for objects, but you specify the property you want to pull from the source
+  - `const o = {a: 1, b: 'hi', c: 4}; const {a, c} = o;`
+  - can map names to new variables instead of just using original property names `const {a: count, b: type} = o;`
+
 ### Exceptions
+
+- supports exception handling with `try catch` and `throw` syntax
+- `finally` block also supported (always called when try block is exited, regardless if an exception was thrown)
+- restrict exceptions to truly exceptional situations
+- fallback pattern: put the normal feature path in try block and provide fallback implementation in catch block
