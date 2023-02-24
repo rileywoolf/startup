@@ -36,6 +36,62 @@ Made my web server communication secure through Caddy.
 
 ## HTML
 
+### Structure
+
+- common elements: `body`, `header`, `footer`, `main`, `section`, `aside`, `p`, `table`, `ol/ul` ordered or unordered list, `div`, `span`
+- block (distinct block in the structure) vs. inline (don't disrupt the flow of a block of content)
+
+### Input
+
+| Element    | Meaning                          | Example                                        |
+| ---------- | -------------------------------- | ---------------------------------------------- |
+| `form`     | Input container and submission   | `<form action="form.html" method="post">`      |
+| `fieldset` | Labeled input grouping           | `<fieldset> ... </fieldset>`                   |
+| `input`    | Multiple types of user input     | `<input type="" />`                            |
+| `select`   | Selection dropdown               | `<select><option>1</option></select>`          |
+| `optgroup` | Grouped selection dropdown       | `<optgroup><option>1</option></optgroup>`      |
+| `option`   | Selection option                 | `<option selected>option2</option>`            |
+| `textarea` | Multiline text input             | `<textarea></textarea>`                        |
+| `label`    | Individual input label           | `<label for="range">Range: </label>`           |
+| `output`   | Output of input                  | `<output for="range">0</output>`               |
+| `meter`    | Display value with a known range | `<meter min="0" max="100" value="50"></meter>` |
+
+- the purpose of a `form` element is to submit the inputs it contains (necessary before JavaScript)
+- many different input types:
+  - text: single line text value
+  - password: obscured password
+  - email
+  - tel: telephone number
+  - url: URL address
+  - number
+  - checkbox: inclusive selection
+  - radio: exclusive selection
+  - range: range-limited number
+  - date: year, month, day
+  - datetime-local: date and time
+  - month: year, month
+  - week: week of year
+  - color
+  - file: local file
+  - submit: button to trigger form submission
+- in order to create an input you have to specify the desired `type` attribute along with other attributed associated with that input type
+- common input elemeent attributes
+  - name: name of the input; submitted as the name of the input if used in a form
+  - disabled: disables the user's ability to interact with the input
+  - value: initial value for the input
+  - required: requires that a value be entered
+- `pattern` attribute exists for text, search, url, tel, email, and password inputs to provide a regex that has to match the input for it to be valid
+
+### Media Elements
+
+- external media: all media tags that reference external media take a URL as an attribute which can be either a relative or full path
+  - image: `img` element has `src` attribute to specify URL to source image and `alt` attribute to describe the image
+  - audio: `audio` element has `src` for the URL, `controls` if you want the user to be able to control playback, `autoplay` starts audio as soon as it is loaded, and `loop` keeps the audio playing over and over
+  - video: `video` element has `src` for the URL, and `controls` and `autoplay` like audio
+- internal media: allow you to create images directly in your HTML
+  - `svg` (scalable vector graphics)
+  - `canvas` (simple HTML for the canvas, but need JavaScript for drawing)
+
 ### Simon HTML Assignment
 
 - One of the main things that this assignment taught me was how to add hyperlinks to other pages on the website so that you can click on the link to see a different page.
