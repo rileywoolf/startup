@@ -99,8 +99,135 @@ Made my web server communication secure through Caddy.
 
 ## CSS
 
-- CSS Practice assignment: learned about selectors, declarations, fonts, and animations.
-- CSS Flex: to make a body element a responsive flexbox, set the display property to flex; `flex: 1` means that it will get one fractional unit of growth, while `flex: 0 80px` won't allow that element to grow and will give it a starting height of 80pixels
+- three ways to associate CSS with HTML
+  1. `style` attribute of HTML element and explicitly assign declarations
+  2. use the HTML `style` element to define CSS rules within the HTML (should appear in the head element)
+  3. use HTML `link` element to create hyperlink ref to external file containing CSS (must appear in head element)
+- rules cascade down from highest nodes to lowest level (lower declaration overrides higher)
+- box model
+  - innermost box: contains the element's content
+  - padding
+  - border
+  - margin: considered external to actual styling of box, only represents whitespace
+
+### Selectors
+
+- element type selector
+  - element name selector (like `body`)
+  - can use wildcard element name selector (`*`) to select all elements
+- combinators
+  - descendant combinator: defined with a space delimited list of values where each item in the list is a descendant of the previous item (`body section` = any section that is a descendant of a body)
+  - child: a list of direct children (`section > p` = any p that is a direct child of a section)
+  - general sibling: a list of siblings (`p ~ div` = any p that has a div sibling)
+  - adjacent sibling: a list of adjacent siblings (`p + div` = any p that has an adjacent div sibling)
+- class selector (`.class-name`): can also be combined with element name
+- id selector (`#id`)
+- attribute selector
+  - allows you to choose elements based on their attributes
+  - ex. `p[class='summary']`
+- pseudo selector: select based on positional relationships, mouse interactions, hyperlink visitation states, attributes)
+
+### Declarations
+
+- specify a property and value to assign when the rule selector matches 1+ elements
+  | Property | Value | Discussion |
+  | ------------------ | ---------------------------------- | ------------------------------------------------------------------------------ |
+  | background-color | color | Fill the background color |
+  | border | color width style | Sets the border using shorthand where any or all of the values may be provided |
+  | border-radius | unit | The size of the border radius |
+  | box-shadow | x-offset y-offset blu-radius color | Creates a shadow |
+  | columns | number | Number of textual columns |
+  | column-rule | color width style | Sets the border used between columns using border shorthand |
+  | color | color | Sets the text color |
+  | cursor | type | Sets the cursor to display when hovering over the element |
+  | display | type | Defines how to display the element and its children |
+  | filter | filter-function | Applies a visual filter |
+  | float | direction | Places the element to the left or right in the flow |
+  | flex | | Flex layout. Used for responsive design |
+  | font | family size style | Defines the text font using shorthand |
+  | grid | | Grid layout. Used for responsive design |
+  | height | unit | Sets the height of the box |
+  | margin | unit | Sets the margin spacing |
+  | max-[width/height] | unit | Restricts the width or height to no more than the unit |
+  | min-[width/height] | unit | Restricts the width or height to no less than the unit |
+  | opacity | number | Sets how opaque the element is |
+  | overflow | [visible/hidden/scroll/auto] | Defines what happens when the content does not fix in its box |
+  | position | [static/relative/absolute/sticky] | Defines how the element is positioned in the document |
+  | padding | unit | Sets the padding spacing |
+  | left | unit | The horizontal value of a positioned element |
+  | text-align | [start/end/center/justify] | Defines how the text is aligned in the element |
+  | top | unit | The vertical value of a positioned element |
+  | transform | transform-function | Applies a transformation to the element |
+  | width | unit | Sets the width of the box |
+  | z-index | number | Controls the positioning of the element on the z axis |
+- units to define the size of a CSS property
+  - px: number of pixels
+  - pt: points (1/72 of an inch)
+  - in: inches
+  - cm: centimeters
+  - %: percentage of parent element
+  - em: multiplier of width of the letter m in the parent's font
+  - rem: multiplier of width of the letter m in the root's font
+  - ex: multiplier of the height of the element's font
+  - vw: percentage of viewport's width
+  - vh: percentage of viewport's height
+  - vmin: percentage of viewport's smaller dimension
+  - vmax: percentage of viewport's larger dimension
+- color
+  - keyword: set of predefined colors (`cornflowerblue`)
+  - RGB hex: red, green, and blue as hex (with optional alpha opacity)
+  - RGB function: rgb as percentage or num 0-255, with optional alpha opacity (`rbg(50%, 255, 128, 0,5)`)
+  - HSL: hue (position on 365 degree color wheel), saturation (how gray the color is), and light (how bright the color is) with optional opacity percentage (`hsl(180, 30%, 90%, 0.5)`)
+
+### Fonts
+
+- font families: `serif` (small stroke attached to ends of major strokes), `sans-serif` (no extra strokes), `fixed` (all chars same size), `symbol` (non-lang chars like emojis or arrows)
+- importing fonts
+  - use `@font-face` rule to provide font name and source location
+  - instead of hosting font files on your server, you can load them from a font provider (easiest way is to use CSS import statement)
+
+### Animation
+
+- add `animation-name` and `animation-duration` properties to the element you want to animate
+- create `@keyframes name { from{...} to{...}}`
+
+### Responsive Design
+
+- common options for `display`: none (don't display), block (displays with width that fills its parent element), inline (displays with width only as large as its content), flex, grid
+- viewport meta tag
+  - include this in head element of all HTML pages to tell the browser not to scale the page
+  - `<meta name="viewport" content="width=device-width,initial-scale=1"/>`
+- float: moves an element to the left or right of its container element and allows inline elements to wrap around it
+- media queries
+  - dynamically detects the size and orientation of the device and applies CSS rules accordingly
+  - `@media (orientation: portrait) { ... }`
+
+#### grid
+
+- set `display` property of container element to `grid`
+- property `grid-template-columns` specifies the layout of grid columns
+- `grid-gap` sets the gap between grid items
+
+#### flex
+
+- helpful to partition application into areas that responsively move around as window resizes/orientation changes
+- set `display` property of container element to `flex`
+- choose orientation by setting `flex-direction` property
+- in the children elements, set the property of `flex`
+  - `flex: 1` means that the child gets one fractional unit of growth
+  - `flex: 0 80px` means that it will not grow and that its starting height is 80px
+
+### Debugging
+
+- use Google Chrome debugger by right clicking on the HTML page element you want to debug and clicking `inspect` (use the Live Server extension in VS Code to pull it up in your browser)
+- can change the values right in the debugger to allow you to see how the property is affecting the page
+
+### Frameworks
+
+- provide functions and components that commonly appear in web applications
+- bootstrap
+  - integrate bootstrap into your web apps by adding the HTML link elements to your head element
+  - after it is linked in your HTML files, you can use the components it provides
 
 ### Simon CSS Assignment
 
