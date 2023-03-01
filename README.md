@@ -395,3 +395,63 @@ const obj = {
 - `finally` block also supported (always called when try block is exited, regardless if an exception was thrown)
 - restrict exceptions to truly exceptional situations
 - fallback pattern: put the normal feature path in try block and provide fallback implementation in catch block
+
+### Scope
+
+- four different kinds
+  1. global: visible to all code
+  2. module: visible to all code running in a module
+  3. function: visible within a function
+  4. block: visible within a block of code delimited by curly braces
+- `var` was the original keyword to declare a variable, but it ignores block scope SO USE `let` or `const`
+- `this`: represents a variable that points to an object containing the context within the scope of line currently being executed
+  1. global: referenced outside a function or object it refers to the `globalThis` object, which is the context for runtime environment
+  2. function: referenced inside a function it refers to the object that owns the function
+  3. object: referenced in an object, it refers to the object
+- closure: a function and its surrounding state
+  - whatever variables are accessible when a function is created are available inside that function (even if you pass the function outside the scope of its orginal creation)
+
+### Modules
+
+- have to explicitly export the objects you want to be visible outside the module: `export function alertDisplay(msg) { alert(msg); }`
+- import the exported function into another module using `import` : `import { alertDisplay } from './alert.js';`
+- modules can only be called from other modules
+
+### DOM (Document Object Model)
+
+- object representation of the HTML elements the browser uses to render the display
+- provide access to the DOM through global var named `document` that points to the root element of the DOM
+- everything in an HTML documeent has a node in the DOM
+- accessing DOM: you can provide a CSS selector to the `querySelectorAll` function in order to select elements from the document
+- modifying DOM
+  - to create a new element, you first create the element on the DOM doc, then you insert the new element into the DOM tree by appending to an existing element
+  ```
+  function insertChild(parentSelector, text) {
+    const newChild = document.createElement('div');
+    newChild.textContent = text;
+    const parentElement = document.querySelector(parentSelector);
+    parentElement.appendChild(newChild);
+  }
+  insertChild('#courses', 'new course');
+  ```
+  - to delete element, call `removeChild` on the parent element
+  ```
+  function deleteChild(parentSelector) {
+    const e1 = document.querySelector(parentSelector);
+    e1.parentElement.removeChild(e1);
+  }
+  deleteChild('#courses div');
+  ```
+  - injecting HTML
+    - `const e1 = document.querySelector('div'); e1.innerHTML = '<div class="injected"><b>Hello</b>!</div>';`
+    - make sure that if you inject HTML it cannot be manipulated by a user (either sanitize any HTML that contains variables or just use DOM manipulation)
+  - event listeners
+    - all DOM elements support ability to attach a function that gets called when an event occurs on the element
+    - this event listener gets called when an element gets clicked
+    ```
+    const submitDataE1 = document.querySelector('#submitData');
+    submitDataE1.addEventListener('click', function (event) {
+      console.log(event.type);
+    });
+    ```
+    - common events: clipboard, focus, keyboard, mouse, text selection
