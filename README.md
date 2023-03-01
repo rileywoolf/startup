@@ -442,16 +442,16 @@ const obj = {
   }
   deleteChild('#courses div');
   ```
-  - injecting HTML
-    - `const e1 = document.querySelector('div'); e1.innerHTML = '<div class="injected"><b>Hello</b>!</div>';`
-    - make sure that if you inject HTML it cannot be manipulated by a user (either sanitize any HTML that contains variables or just use DOM manipulation)
-  - event listeners
-    - all DOM elements support ability to attach a function that gets called when an event occurs on the element
-    - this event listener gets called when an element gets clicked
+- injecting HTML
+  - `const e1 = document.querySelector('div'); e1.innerHTML = '<div class="injected"><b>Hello</b>!</div>';`
+  - make sure that if you inject HTML it cannot be manipulated by a user (either sanitize any HTML that contains variables or just use DOM manipulation)
+- event listeners
+  - all DOM elements support ability to attach a function that gets called when an event occurs on the element
+  - this event listener gets called when an element gets clicked
     ```
     const submitDataE1 = document.querySelector('#submitData');
     submitDataE1.addEventListener('click', function (event) {
       console.log(event.type);
     });
     ```
-    - common events: clipboard, focus, keyboard, mouse, text selection
+  - common events: clipboard, focus, keyboard, mouse, text selection
