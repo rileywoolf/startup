@@ -455,3 +455,30 @@ const obj = {
     });
     ```
   - common events: clipboard, focus, keyboard, mouse, text selection
+
+### Promises
+
+- JavaScript executes as a single threaded application (only one piece of code is executing at the same time), but you can asynchronously execute code with promises
+- a promise object can be one of three states at any given time:
+  1. pending: currently running asynchronously
+  2. fulfilled: completed successfully
+  3. rejected: failed to complete
+- create by calling the promise object constructor and passing it an executor function to run the asynch operation
+- resolving and rejecting
+  - promise executor func takes two functions as parameters: `resolve` and `reject`
+  - calling `resolve` sets the promise to `fulfilled` state and calling `reject` sets it to `rejected`
+- then, catch, finally
+  - `then` is called if the promise is fulfilled
+  - `catch` is called if the promise is rejected
+  - `finally` is always called after the processing is completed
+- the observer pattern
+  - another way to process asynchronously
+  - while promises immediately begin to execute when the promise is created, observers form a pipeline that you can then pass an execution object into (makes observers reusable)
+
+### Async/Await
+
+- `await` wraps the execution of a promise and removes need to chain functions
+- blocks until the promise state moves to fulfilled or throws an exception if it moves to rejected
+- await can only be called in the top level of JavaScript OR in a function defined with `async` keyword
+  - transforms the function so it returns a promise that resolves to the value the function previously returned
+  - turns any function into an asynch function so it can make asynch requests
