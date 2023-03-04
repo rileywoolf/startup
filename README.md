@@ -482,3 +482,7 @@ const obj = {
 - await can only be called in the top level of JavaScript OR in a function defined with `async` keyword
   - transforms the function so it returns a promise that resolves to the value the function previously returned
   - turns any function into an asynch function so it can make asynch requests
+
+### Simon JS Assignment
+
+- if the JS associated with an HTML page references HTML elements during initialization, the script needs to be located at the bottom of the HTML
