@@ -422,7 +422,9 @@ const obj = {
 - object representation of the HTML elements the browser uses to render the display
 - provide access to the DOM through global var named `document` that points to the root element of the DOM
 - everything in an HTML documeent has a node in the DOM
-- accessing DOM: you can provide a CSS selector to the `querySelectorAll` function in order to select elements from the document
+- accessing DOM: you can provide a CSS selector to select elements from the document
+  - `querySelector` returns the first element that matches the specified selector
+  - `querySelectorAll` returns a list of the elements that match the selector
 - modifying DOM
   - to create a new element, you first create the element on the DOM doc, then you insert the new element into the DOM tree by appending to an existing element
   ```
