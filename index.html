@@ -6,6 +6,9 @@
     <title>bibliobibuli</title>
     <link rel="icon" href="resources/book.png" />
 
+    <!-- connect the html to the js file-->
+    <script src="login.js"></script>
+
     <link rel="stylesheet" href="main.css" />
     <!-- Include bootstrap CSS framework -->
     <link
@@ -116,22 +119,18 @@
         </div>
       </div>
       <div class="login">
-        <form>
+        <form method="get" action="reviews.html">
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input
-              type="email"
-              id="emailForm"
-              class="form-control"
-              placeholder="email address"
-            />
+            <input type="text" id="username" placeholder="your username here" />
           </div>
           <!-- Submit button -->
           <div class="submit">
             <button
-              type="button"
+              type="submit"
               class="btn btn-block mb-4 text-light"
               style="background-color: #9ea3ba"
+              onclick="login()"
             >
               Sign in
             </button>
