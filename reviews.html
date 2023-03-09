@@ -40,7 +40,14 @@
             <a class="nav-link" href="about.html">about</a>
           </li>
         </menu>
-        <p class="slogan">"The sort of people who read too much."</p>
+        <div>
+          <p class="slogan">"The sort of people who read too much."</p>
+          <p class="greeting">
+            Welcome, <span class="user-name"> Unknown User</span>!
+          </p>
+        </div>
+        
+        
       </nav>
     </header>
 
@@ -49,11 +56,11 @@
         <h2>reviews</h2>
         <div class="review-container">
           <div>
-            <h5>PRIDE AND PREJUDICE</h5>
-            <h6>JANE AUSTEN</h6>
+            <h5 class="book-title">PRIDE AND PREJUDICE</h5>
+            <h6 class="book-author">JANE AUSTEN</h6>
           </div>
           <div class="rating">★★★★★</div>
-          <div class="review">
+          <div class="review-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -66,11 +73,11 @@
 
         <div class="review-container">
           <div>
-            <h5>TITLE</h5>
-            <h6>AUTHOR</h6>
+            <h5 class="book-title">TITLE</h5>
+            <h6 class="book-author">AUTHOR</h6>
           </div>
           <div class="rating">★★★★☆</div>
-          <div class="review">
+          <div class="review-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -83,11 +90,11 @@
 
         <div class="review-container">
           <div>
-            <h5>TITLE</h5>
-            <h6>AUTHOR</h6>
+            <h5 class="book-title">TITLE</h5>
+            <h6 class="book-author">AUTHOR</h6>
           </div>
           <div class="rating">★☆☆☆☆</div>
-          <div class="review">
+          <div class="review-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -123,7 +130,7 @@
           BOOK TITLE <br />
           AUTHOR
         </div>
-      </div>
+      
     </main>
 
     <footer class="text-dark text-muted">
@@ -134,5 +141,7 @@
         >
       </div>
     </footer>
+        <!-- Script is located at bottom because it references HTML elements during initialization. -->
+    <script src="reviews.js"></script>
   </body>
 </html>

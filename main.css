@@ -77,6 +77,14 @@ menu .nav-item {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.greeting {
+  float: right;
+  padding-right: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+}
+
 .home-container {
   display: grid !important;
   grid-template-columns: auto auto auto;
@@ -122,6 +130,14 @@ menu .nav-item {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.review-body {
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .review-container {
   display: grid !important;
   grid-template-columns: auto auto;
@@ -136,6 +152,7 @@ menu .nav-item {
   color: white;
   flex: 0 310px;
   margin-top: 20px;
+  padding-right: 10px;
 }
 
 .submit {
