@@ -83,30 +83,31 @@ class Review {
 }
 
 class CurrentlyReading {
-  constructor(el, userNameCurrEl, titleCurrEl, authorCurrEl) {
+  constructor(el, userNameEl, titleEl, authorEl) {
     this.el = el;
-    this.userNameCurrEl = userNameCurrEl;
-    this.titleCurrEl = titleCurrEl;
-    this.authorCurrEl = authorCurrEl;
+    this.userNameEl = userNameEl;
+    this.titleEl = titleEl;
+    this.authorEl = authorEl;
 
     this.updateTextContent();
   }
 
   updateTextContent() {
-    this.userNameCurrEl.textContent = this.getCurrUserName();
-    this.titleCurrEl.textContent = this.getCurrTitle();
-    this.authorCurrEl.textContent = this.getCurrAuthor();
+    this.userNameEl.textContent = this.getUserName();
+    this.titleEl.textContent = this.getTitle();
+    this.authorEl.textContent = this.getAuthor();
   }
 
-  getCurrUserName() {
+  // CURRENTLY JUST RETURNS DUMMY DATA.
+  getUserName() {
     return "@username";
   }
 
-  getCurrTitle() {
+  getTitle() {
     return "TITLE";
   }
 
-  getCurrAuthor() {
+  getAuthor() {
     return "AUTHOR";
   }
 }
