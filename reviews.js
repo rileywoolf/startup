@@ -18,6 +18,17 @@ class ReviewPage {
       );
     });
 
+    document.querySelectorAll(".current-item").forEach((el) => {
+      let children = el.children;
+      const userNameCurrEl = children[0];
+      const titleCurrEl = children[1];
+      const authorCurrEl = children[2];
+
+      this.currentlyReading.push(
+        new CurrentlyReading(el, userNameCurrEl, titleCurrEl, authorCurrEl)
+      );
+    });
+
     const userNameEl = document.querySelector(".user-name");
     userNameEl.textContent = this.getUserName();
   }
@@ -72,11 +83,31 @@ class Review {
 }
 
 class CurrentlyReading {
-  constructor(el, userNameEl, titleEl, authorEl) {
+  constructor(el, userNameCurrEl, titleCurrEl, authorCurrEl) {
     this.el = el;
-    this.userNameEl = userNameEl;
-    this.titleEl = titleEl;
-    this.authorEl = authorEl;
+    this.userNameCurrEl = userNameCurrEl;
+    this.titleCurrEl = titleCurrEl;
+    this.authorCurrEl = authorCurrEl;
+
+    this.updateTextContent();
+  }
+
+  updateTextContent() {
+    this.userNameCurrEl.textContent = this.getCurrUserName();
+    this.titleCurrEl.textContent = this.getCurrTitle();
+    this.authorCurrEl.textContent = this.getCurrAuthor();
+  }
+
+  getCurrUserName() {
+    return "@username";
+  }
+
+  getCurrTitle() {
+    return "TITLE";
+  }
+
+  getCurrAuthor() {
+    return "AUTHOR";
   }
 }
 
