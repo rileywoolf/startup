@@ -6,9 +6,17 @@ class ReviewPage {
     this.reviews = [];
     this.currentlyReading = [];
 
-    // document.querySelectorAll(".review-container").forEach((el, i) => {
-    //   this.reviews.set();
-    // });
+    document.querySelectorAll(".review-container").forEach((el) => {
+      let children = el.children;
+      const titleEl = children[0].firstElementChild;
+      const authorEl = children[0].lastElementChild;
+      const ratingEl = children[1];
+      const reviewTextEl = children[2];
+      const userNameEl = children[3];
+      this.reviews.push(
+        new Review(el, titleEl, authorEl, ratingEl, reviewTextEl, userNameEl)
+      );
+    });
 
     const userNameEl = document.querySelector(".user-name");
     userNameEl.textContent = this.getUserName();
@@ -20,16 +28,55 @@ class ReviewPage {
 }
 
 class Review {
-  constructor(el) {
+  constructor(el, titleEl, authorEl, ratingEl, reviewTextEl, userNameEl) {
     this.el = el;
-    // A review has a TITLE, AUTHOR, RATING, REVIEW, and USERNAME
-    // DO I NEED TO GET THE ELEMENTS HERE?
+    this.titleEl = titleEl;
+    this.authorEl = authorEl;
+    this.ratingEl = ratingEl;
+    this.reviewTextEl = reviewTextEl;
+    this.userNameEl = userNameEl;
+
+    this.updateTextContent();
+  }
+
+  // Go through and update the text for each element.
+  updateTextContent() {
+    this.titleEl.textContent = this.getTitle();
+    this.authorEl.textContent = this.getAuthor();
+    this.ratingEl.textContent = this.getRating();
+    this.reviewTextEl.textContent = this.getReviewText();
+    this.userNameEl.textContent = this.getUserName();
+  }
+
+  // CURRENTLY JUST RETURNS DUMMY DATA.
+  getTitle() {
+    return "TITLE";
+  }
+
+  getAuthor() {
+    return "AUTHOR";
+  }
+
+  getRating() {
+    const numStars = 3;
+    return "★".repeat(numStars) + "☆".repeat(5 - numStars);
+  }
+
+  getReviewText() {
+    return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  }
+
+  getUserName() {
+    return "@username";
   }
 }
 
 class CurrentlyReading {
-  constructor(el) {
+  constructor(el, userNameEl, titleEl, authorEl) {
     this.el = el;
+    this.userNameEl = userNameEl;
+    this.titleEl = titleEl;
+    this.authorEl = authorEl;
   }
 }
 
