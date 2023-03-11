@@ -551,3 +551,118 @@ const obj = {
 ### Simon JS Assignment
 
 - if the JS associated with an HTML page references HTML elements during initialization, the script needs to be located at the bottom of the HTML
+
+## Web Services
+
+### URL (uniform resource locator)
+
+- represents the location of a web source (could be a web page, image, JSON object, gaming session, etc)
+- follows this convention: `<scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>`
+  - scheme: protocol required to ask for the resource (ex: https)
+  - domain name: the domain that owns the resource the URL represents (ex: byu.edu)
+  - port: the numbered network port used to connect to the domain server; lower numbers are reserved for common internet protocols (ex: 3000)
+  - path: the path to the resource on the domain (ex: /school/byu/user/woolfril)
+  - parameters: represent a list of key value pairs that usually provides additional qualifiers on the resource represented by the path (ex: filter=names&highlight=intro)
+  - anchor: represents a sub-location in the resource, sometimes called hash or fragment ID (ex: summary)
+- URN (Uniform Resource Name) does not specify location information
+- URI (Uniform Resource Identifier) can refer to eitheer a URL or URN
+
+### Ports
+
+- allow a single device to support multiple protocols and different types of services
+- IANA (internet governing body) defines standard usage for port numbers
+  - 0-1023: standard protocols
+  - 1024-49151: ports assigned to requesting entities
+  - 49152-65535: dynamic; used to create dynamic connections to a device
+- some common port numbers
+  - 20: FTP (file transfer protocol)
+  - 22: SSH (secure shell)
+  - 25: SMTP (simple mail transfer protocol)
+  - 53: DNS (domain name system)
+  - 80: HTTP
+  - 110: POP3 (post office protocol) for retrieving email
+  - 123: NTP (network time protocol)
+  - 161: SNMP (simple network management protocol) for managing network devices such as routers or printers
+  - 194: IRC (internet relay chat)
+  - 443: HTTPS
+- ports in the startup project
+  - 22 allows us to SSH to open a remote console of the server
+  - 443 is used for HTTPS and 80 for HTTP, but it redirects all request from port 80 to 443
+  - internally our server can have as many web services running as we want, but we have to make sure each one uses a different port
+
+### HTTP
+
+- request syntax
+  ```
+  <verb> <url path, parameters, anchor> <version>
+  [<header key: value>]*
+  [
+    <body>
+  ]
+  ```
+- response syntax
+  ```
+  <version> <status code> <status string>
+  [<header key: value>]*
+  [
+    <body>
+  ]
+  ```
+- verbs
+  - `GET`: get the requested resource; can request a single resource or a resource that represents a list of resources
+  - `POST`: create a new resource; request body contains the resource; response should include the UID of new resource
+  - `PUT`: update a resource; either path, header, or body must contain UID of resource to be updated; request body contains updated resource; response body may contain resulting updated resource
+  - `DELETE`: delete a resource; either path or header must contain UID of resource to delete
+  - `OPTIONS`: get metadata about a resource; usually only headers are returned, not the resource itself
+- status codes
+  - 1xx - informational
+    - 100: Continue (the service is working on the request)
+  - 2xx - success
+    - 200: Success (requested resource was found and returned)
+    - 201: Created (successfully created new resource)
+    - 204: No Content (successful but no return resource)
+  - 3xx - redirect to some other location, or the previously cached resource is still valid
+    - 304: Not Modified (cached version of resource still valid)
+    - 307: Permanent redirect (resource is no longer at request location, new location is in the response location header)
+    - 308: Temporary redirect (resource is temporarily moved to different location, new location is in response location header)
+  - 4xx - client errors (the request is invalid)
+    - 400: Bad request (malformed or invalid request)
+    - 401: Unauthorized (request didn't provide a valid auth token)
+    - 403: Forbidden (provided auth token is not authorized for the resource)
+    - 404: Not found (requested an unknown resource)
+    - 408: Request timeout (request took too long)
+    - 409: Conflict (provided resource represents an outdated version of the resource)
+    - 418: I'm a teapot (server refuses to brew coffee because it is a teapot) (VERY IMPORTANT ONE)
+    - 429: Too many requests (client is making too many requests too quickly)
+  - 5xx - server errors (the request cannot be satisifed due to server error)
+    - 500: Internal Server Error (server failed to properly process the request)
+    - 503: Service Unavailable (server temporarily down)
+- headers
+  - `Authorization`: a token that authorizes the user making the request (ex: Bearer bdjfhsufe)
+  - `Accept`: the content format the client accepts, can include wildcards (ex: image/\*)
+  - `Content-Type`: format of the response content (ex: text/html; charset=utf-8)
+  - `Cookie`: key value pairs that are generated by the server and stored on the client (ex: SessionID=dsrighsg;)
+  - `Host`: domain name of the server, required in all requests (ex: info.cern.ch)
+  - `Origin`: identifies where the request is coming from as hosts may only allow requests from specific places (ex: cs260.click)
+  - `Access-Control-Allow-Origin`: server response of what origins can make a request, can include wildcards (ex: https://riley260.click)
+  - `Content-Length`: number of bytes contained in the response (ex: 494)
+  - `Cache-Control`: tells the client how it can cache the response (ex: public, max-age=385)
+  - `User-Agent`: the client application that is making the request (ex: Mozilla/5.0 (Macintosh))
+- cookies
+  - HTTP is stateless (one request doesn't know anything about previous or futures requests) but a server/client can track state across requests through cookies
+  - generated by a server and passed to client as a header
+  - the client caches the cookie and returns it as a header in future requests
+
+### SOP and CORS
+
+- Same Origin Policy (SOP) only allows JavaScript to make requests to a domain if it is the same domain the user is currently viewing
+- that helps with security, but makes it harder to build web applications
+- Cross Origin Resource Sharing (CORS) allows the client to specify the origin of a request and then let the server respond with which origins are allowed
+- if the server doesn't specify which origins are allowed, then the browser assumes it must only accept from the same origin
+- to test if you can use a service before including it in your application, make sure it responds with \* or your calling origin
+
+### Fetch
+
+- fetch API is preferred way to make HTTP requests
+- basic usage takes a URL and returns a promise; the `then` function takes a callback function that is called asynchronously when the requested content is obtained
+- if the returned content is of the type `application/json` then you can use `json` function on the response object to convert it to a JS object
