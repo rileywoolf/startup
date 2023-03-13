@@ -666,3 +666,45 @@ const obj = {
 - fetch API is preferred way to make HTTP requests
 - basic usage takes a URL and returns a promise; the `then` function takes a callback function that is called asynchronously when the requested content is obtained
 - if the returned content is of the type `application/json` then you can use `json` function on the response object to convert it to a JS object
+
+### Service Design
+
+- model and sequence diagrams: model the application's primary objects and interactions of the objects and avoid introducing a model that is focused on programming constructs and infrastructure 
+- leveraging HTTP: since web services are usually provided over HTTP, it influences the design of the service; take advantage of this and other technologies instead of recreating the functionality they provide
+- endpoints
+  - a web service is usually split into multiple service endpoints, each one providing a single functional purpose
+  - service endpoints called Application Programming Interface (API)
+  - API can also refer to the entire collection of endpoints
+  - things to consider when designing endpoints
+    - grammatical: in HTTP, everything is a resource and is acted on by an HTTP verb 
+    - readable: the resource you're referencing with HTTP request should be clearly readable in the URL path
+    - discoverable: so users of the endpoints only need to remember the top level endpoint and discover everything else, provide the endpoints for the aggregated resources (this is when you have resources that contain other resources)
+    - compatible: build endpoints so that you can add functionality without breaking existing clients (usually this means your service's clients should just ignore whatever they don't understand)
+    - simple: keep endpoints focused on the primary resources of the application; there should only be one way to act on a resource; endpoints should only do one thing
+    - documented: create an initial draft of documentation before you begin coding to help mentally clarify your design
+- three models for exposing endpoints
+  - RPC (Remote Procedure Calls) [focus: function call]
+    - exposes service endpoints as simple function calls
+    - usually leverages the POST HTTP verb
+    - actual verb and subject is represented by the function name (either the entire path of URL or parameter in POST body)
+    - ```
+      POST /updateOrder HTTP/2
+      {"id": 2197, "date": "20230312"}
+      ```
+  - REST (Representational State Transfer) [focus: resource]
+    - REST verbs always act on a resource
+    - operations on a resource impact the state of the resource as it is transferred 
+    - the proper HTTP verb is used and the URL path uniquely identifies the resource 
+    - ```
+      PUT /order/2197 HTTP/2
+      {"date": "20230313"}
+      ```
+  - GraphQL [focuses on manipulation of data]
+    - main part is a query that specifies the desired data and how it should be joined and filtered
+    - helps remove a lot of logic for parsing endpoints and mapping requests to specific resources 
+    - think of there as only being one endpoint: the query endpoint
+    - some downsides are that the client now has significant power to consume server resources and that it is difficult for the server to implement authorization rights to data 
+    
+### Node.js
+- first successful application for deploying JavaScript outside of a browser which means that JavaScript can power your entire technology stack
+- 
