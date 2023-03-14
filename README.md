@@ -669,14 +669,14 @@ const obj = {
 
 ### Service Design
 
-- model and sequence diagrams: model the application's primary objects and interactions of the objects and avoid introducing a model that is focused on programming constructs and infrastructure 
+- model and sequence diagrams: model the application's primary objects and interactions of the objects and avoid introducing a model that is focused on programming constructs and infrastructure
 - leveraging HTTP: since web services are usually provided over HTTP, it influences the design of the service; take advantage of this and other technologies instead of recreating the functionality they provide
 - endpoints
   - a web service is usually split into multiple service endpoints, each one providing a single functional purpose
   - service endpoints called Application Programming Interface (API)
   - API can also refer to the entire collection of endpoints
   - things to consider when designing endpoints
-    - grammatical: in HTTP, everything is a resource and is acted on by an HTTP verb 
+    - grammatical: in HTTP, everything is a resource and is acted on by an HTTP verb
     - readable: the resource you're referencing with HTTP request should be clearly readable in the URL path
     - discoverable: so users of the endpoints only need to remember the top level endpoint and discover everything else, provide the endpoints for the aggregated resources (this is when you have resources that contain other resources)
     - compatible: build endpoints so that you can add functionality without breaking existing clients (usually this means your service's clients should just ignore whatever they don't understand)
@@ -693,18 +693,59 @@ const obj = {
       ```
   - REST (Representational State Transfer) [focus: resource]
     - REST verbs always act on a resource
-    - operations on a resource impact the state of the resource as it is transferred 
-    - the proper HTTP verb is used and the URL path uniquely identifies the resource 
+    - operations on a resource impact the state of the resource as it is transferred
+    - the proper HTTP verb is used and the URL path uniquely identifies the resource
     - ```
       PUT /order/2197 HTTP/2
       {"date": "20230313"}
       ```
   - GraphQL [focuses on manipulation of data]
     - main part is a query that specifies the desired data and how it should be joined and filtered
-    - helps remove a lot of logic for parsing endpoints and mapping requests to specific resources 
+    - helps remove a lot of logic for parsing endpoints and mapping requests to specific resources
     - think of there as only being one endpoint: the query endpoint
-    - some downsides are that the client now has significant power to consume server resources and that it is difficult for the server to implement authorization rights to data 
-    
+    - some downsides are that the client now has significant power to consume server resources and that it is difficult for the server to implement authorization rights to data
+
 ### Node.js
+
 - first successful application for deploying JavaScript outside of a browser which means that JavaScript can power your entire technology stack
-- 
+- loading a package using Node.js requires two steps: install the package locally on your machine using NPM (node package manager) and then include `require` statement in code that references the package name
+- before you can use NPM to install packages, you have to initialize the code to use it: create a directory that will contain your JS and run `nmp init`, then it will ask you questions about the project (to accept defaults, run `npm init -y`)
+- package.json
+  1. metadata about your project (like its name and default js file)
+  2. commands you can execute to do things like run, test, or distribute your code
+  3. packages that this project depends on
+- `npm <uninstall/install> <package name here>`
+- adding a dependency adds package-lock.json and a directory named node-modules (contains the actual js for the package; DON'T check this directory into your source control system because it is very large and the information can be rebuilt from package files when you run `npm install` on the files)
+- main steps to follow
+  1. create project directory
+  2. initialize it to be able to use NPM with `npm init -y`
+  3. make sure `.gitignore` file contains `node-modules`
+  4. install any desired packages with `npm install <package name>`
+  5. add `require('<package name here>')`
+  6. run the code with `node NAME.js`
+
+### Express
+
+- Node package that provides support for routing requests for service endpoints, manipulating HTTP requests with JSON body content, generating HTTP responses, and using middleware to add functionality
+- create an Express application by installing Express package, calling express constructor, and listening for HTTP requests on a desired port
+- defining routes
+  - HTTP endpoints are implemented by defining routes that call a function based on an HTTP path
+  - `get` function takes two parameters (URL path matching pattern and a callback function invoked when the pattern matches)
+  - the callback function has three parameters (the HTTP request object, the HTTP response object, and the next routing function that Express expects to be called if this routing function wants another function to generate a response)
+  - route path can include a limited wildcard syntax or full regular expressions in the path pattern
+  - don't need to include `next` as a parameter if you are not calling it, but you cannot use middleware functions unless you call next
+- using middleware
+  - mediator/middleware design pattern
+    - middleware represents componentized pieces of functionality
+    - mediator loads middleware componeents and determines order of execution
+    - Express is the mediator and middleware functions are the middleware components
+  - Express has standard set of middleware functions (with functionality like routing, authentication, CORS, cookies, logging), some are default and some need to be installed; or you can declare your own middleware functions
+  - looks really similar to routing functions because routing functions are also middleware functions
+    - difference is that routing functions are only called if the pattern matches, but middleware functions are always called for every HTTP request as long as the preceding middleware function calls next
+    - `function middlewareName(req, res, next)`
+    - usually call the next function after completing processing so the next middleware function can go
+  - the order you add middleware to the Express app object controls the order the functions are called
+  - error handling middleware
+    - can add middleware for handling errors
+    - looks similar to other middleware, but with the additional err parameter containing the error
+    -
