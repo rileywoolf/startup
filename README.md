@@ -748,4 +748,3 @@ const obj = {
   - error handling middleware
     - can add middleware for handling errors
     - looks similar to other middleware, but with the additional err parameter containing the error
-    -
