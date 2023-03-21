@@ -748,3 +748,55 @@ const obj = {
   - error handling middleware
     - can add middleware for handling errors
     - looks similar to other middleware, but with the additional err parameter containing the error
+
+### Debugging Node
+- debugging in VSCode:
+  - `F5` starts the debugger and continues running from the current line when the debugger is running
+  - `F10` steps to next line
+  - `F11` steps into fucntion call
+  - `SHIFT-F5` stops the debugger
+- Nodemon
+  - basically a wrapper around node that watches for files in the project directory to change and automatically restarts node when it detects you've saved something
+  - have to create a launch configuration: `CMD-SHIFT-P`, `Debug: Add configuration`, `Node.js: Nodemon setup`, change program from `app.js` to whatever your JS file is
+
+### PM2
+- we want our services to keep running as daemon but we also want an easy way to start and stop our services
+- already installed on our production server as part of AWS AMI and updated in deployment scripts
+- to register a new web service
+  - add the rule to Caddyfile (tells it how to direct requests for the domain)
+  - create directory and add files for the web service
+    - `node index.js 5000` starts up the web service, listening on port 5000
+  - configure PM2 to host web service
+    - in your service's directory, `pm2 start index.js -n SERVICE_NAME -- PORT#`
+    - `pm2 save`
+
+###  UI Testing
+- UI testing is hard but necessary
+- two solutions: 
+  - automating the browser (Playwright)
+    - Selenium first popular tool to automate the browser (but is slow and flaky)
+    - install Playwright in project directory: `npm init playwright@latest`
+    - put test in tests/ folder 
+  - test various devices (BrowserStack)
+    - allows you to select a physical device to run interactively or to use with Selenium
+    - launching a device connects it to a physical device hosted in a data center 
+
+### Endpoint Testing
+- easier to test services than UI because it doesn't require a browser
+- Jest 
+  - `npm install jest -D` installs Jest as a development package
+  - `npm run test`
+- supertest (NPM package to make HTTP requests without sending them over the network)
+- with TDD (test driven development) you can write your tests before you actually write your code
+  - when the tests pass, then your code is complete
+  - when you make modifications to the code, you know if you've broken something by running the tests again 
+
+### Simon Service Assignment
+- steps to convert Simon to a service
+  1. move all previous deliverable code files (.html, .js, .css, favicon, asserts) into sub-directory named `public`
+  2. configure the dir to work with node.js: `npm init -y`
+  3. modify/create .gitignore to ignore node_modules
+  4. install Express: `npm install express`
+  5. create `index.js` in root of project as entry point for node.js
+  6. add basic Express JS code to host application static content and desired endpoints
+  7. modify Simon code to make service endpoint requests to the new service code 
