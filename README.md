@@ -800,3 +800,42 @@ const obj = {
   5. create `index.js` in root of project as entry point for node.js
   6. add basic Express JS code to host application static content and desired endpoints
   7. modify Simon code to make service endpoint requests to the new service code 
+
+### Storage Services
+- don't store files directly on your server, but don't need a database service (that's overkill)
+  - server has limited drive space (running out causes the application to fail)
+  - consider your server as temporary (can be thrown away and replaced by a copy at any time)
+  - need backup copies of application and user files 
+- AWS S3
+  - lots of advantages: unlimited capacity, only pay for storage you use, optimized for global access, multiple redundant copies of every file, can version the files ... etc
+  - if you use AWS S3, make sure you don't include your credentials in your code or you'll get hacked and your AWS account will be taken over
+
+### Data Services
+- web applications commonly need to store application and user data persistently (usually a representation of complex interrelated objects)
+- historically SQL databases have been used, but there are a lot of good options (each with their own specialty)
+  - MySQL: relational queries
+  - Redis: memory cached objects
+  - ElasticSearch: ranked free text
+  - MongoDB: JSON objects
+  - DynamoDB: key value pairs
+  - Neo4J: graph based data
+  - InfluxDB: time series data
+- MongoDB
+  - think of it as a large array of JS objects, each with a unique ID
+  - no strict schema requirements 
+  - `npm install mongodb`
+  - making a new `MongoClient` requires a uri that contains a username, password, and hostname
+  - from that client, you can get a database object, and from that db object you can get a collection object
+  - `insertOne` allows you to insert into the collection (mongo automatically creates the db or collection for you if they don't already exist)
+  - `find` allows you to query for documents (it is asynchronous)
+    - if you don't supply any parameters, it returns all documents in the collection
+    - can pass it a query (like what value you want for a specific attribute) and options (for example: limit to first 10, sort in descending order)
+  - KEEP YOUR KEYS OUT OF YOUR CODE
+    - load your credentials when the application executes (a common way to do that is to read them from env variables)
+      - access the environment in JS with `process.env`
+      - set env variables for production environment by modifying the /etc/environment file after sshing into your production server
+      - set env variables for development environment by adding the same variables into the ~/.zprofile file
+
+### Simon DB 
+- I LEARNED THAT YOU SHOULD USE deployService.sh NOT deployFiles.sh :smiling_face_with_tear:
+- I think that it is so nice that Mongo will create the database/collection you are adding to if it doesn't already exist: very helpful!!
