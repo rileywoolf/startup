@@ -839,3 +839,27 @@ const obj = {
 ### Simon DB 
 - I LEARNED THAT YOU SHOULD USE deployService.sh NOT deployFiles.sh :smiling_face_with_tear:
 - I think that it is so nice that Mongo will create the database/collection you are adding to if it doesn't already exist: very helpful!!
+
+### Authorization Services
+- you need a way to uniquely associate a user's data with a particular credential
+- need to determine what a user is authorized to do within the application as well
+- many service providers/package devs have created solutions to use for authentication and authorization
+- use standard protocols for authenticating and authorizing (OAuth, SAML, OIDC) and support concepts like SSO (Single Sign On: allows you to use same credentials for multiple web applications) and Federated Login (allows you to login once and then that auth token is used to automatically log the user into multiple websites)
+
+#### Account Creation and Login
+- usually requires two endpoints: one to create the auth credential and another to authenticate the user on future visits
+1. design service endpoints
+2. build web service
+3. handle requests
+4. setup database connection
+5. generate auth tokens
+6. hash the passwords before storing 
+7. pass auth tokens to browser to the endpoints
+
+#### Simon Login
+- secureApiRouter wraps the exisiting router and verifies the credentials for endpoints before passing the request to endpoints that require authorization (instead of apiRouter.get(...), use secureApiRouter.get(...))
+- secure cookie to store the auth token for the user
+  - `secure`: requires HTTP to be used when sending cookie back to server
+  - `httpOnly`: tells the browser that JS running on the browser can't read the cookie
+  - `sameSite`: only returns the cookie to the domain that generated it
+- created service endpoints to store credentials and update the auth cookie: `authCreate`, `authLogin`, `authLogout`, `userGet`
