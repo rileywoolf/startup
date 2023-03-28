@@ -1,13 +1,11 @@
 # startup
 
 ## design
-
 Did you make a new year's resolution to read more books but aren't quite sure what to read? Do you love reading but need a place to keep track of your incredibly important opinions of the books you've read? We have just the app for you! Bibliobibuli allows you to share what book you are currently reading as well as see what others are reading. You can write reviews of the books you have read and see what others are saying about the books they've read. Get ready to read!
 
 ![wireframe of page design](resources/bibliobibuli-wireframe.png)
 
 ### Key Features
-
 - secure login over HTTPS
 - ability to list what book you're currently reading
 - see what books others are reading
@@ -16,24 +14,20 @@ Did you make a new year's resolution to read more books but aren't quite sure wh
 - reviews and currently reading are persistently stored
 
 ### Server IP Address (EC2)
-
 http://18.216.215.40/
 
 ### Server Domain (Route 53)
-
 https://riley260.click/
 
 # Class Notes
 
 ### Github Assignment
-
 I am modifying this for the first assignment!
 GitHub assignment: I learned how to resolve merge conflicts!
 
 ## Web Servers
 
 ### The Internet
-
 - big picture: internet is a collection of wires connecting all the computers in the world (a lot of the wires are wireless and not all computers are connected)
 - to talk to another device, you have to have an IP address
 - but humans prefer symbolic name, so domain names are converteed to IP addresses through a lookup in DNS (Domain Name System)
@@ -47,14 +41,12 @@ GitHub assignment: I learned how to resolve merge conflicts!
   | Link | Fiber, hardware | Physical connections |
 
 ### Web Servers
-
 - web server: computing device that hosts a web service that knows how to accept incoming internet connections and speak the HTTP application protocol
 - service gateway (reverse proxy): a simple web service that listens on the common HTTP port 443; then it looks at the request and maps it to the other services running on different ports
 - microservice: web service that provides a single functional purpose
 - serverless: remove the server from the architecture conceptually and just write a function that speaks HTTP
 
 ### Domain Names
-
 - `dig` allows you to get the IP address for any domain
 - domain name: just a text string that follows specific naming convention and is listed in a special databas (domain name registry)
 - root domain
@@ -67,7 +59,6 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - CNAME (canonical name) : maps one domain name to another domain name (map byu.com to byu.edu)
 
 ### Caddy
-
 - web service that listens to incoming HTTP requests and either serves up requested files or routes the request to another web service (Caddy is a service gateway)
 - using Caddy for
   - handling creation/rotation of web certs (allows easy support of HTTPS)
@@ -75,7 +66,6 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - acting as a gateway for subdomain requests to Simon and startup services
 
 ### HTTPS, TLS, and certificates
-
 - HTTPS (Secure Hypertext Transport Protocol) is just HTTP but with secure connection that is negotiated before any data exchange
 - all data is encrypted using TLS protocol
   - works by negotiating a shared secret that is used to encrypt data
@@ -87,12 +77,10 @@ GitHub assignment: I learned how to resolve merge conflicts!
 ## HTML
 
 ### Structure
-
 - common elements: `body`, `header`, `footer`, `main`, `section`, `aside`, `p`, `table`, `ol/ul` ordered or unordered list, `div`, `span`
 - block (distinct block in the structure) vs. inline (don't disrupt the flow of a block of content)
 
 ### Input
-
 | Element    | Meaning                          | Example                                        |
 | ---------- | -------------------------------- | ---------------------------------------------- |
 | `form`     | Input container and submission   | `<form action="form.html" method="post">`      |
@@ -133,7 +121,6 @@ GitHub assignment: I learned how to resolve merge conflicts!
 - `pattern` attribute exists for text, search, url, tel, email, and password inputs to provide a regex that has to match the input for it to be valid
 
 ### Media Elements
-
 - external media: all media tags that reference external media take a URL as an attribute which can be either a relative or full path
   - image: `img` element has `src` attribute to specify URL to source image and `alt` attribute to describe the image
   - audio: `audio` element has `src` for the URL, `controls` if you want the user to be able to control playback, `autoplay` starts audio as soon as it is loaded, and `loop` keeps the audio playing over and over
@@ -143,12 +130,10 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - `canvas` (simple HTML for the canvas, but need JavaScript for drawing)
 
 ### Simon HTML Assignment
-
 - One of the main things that this assignment taught me was how to add hyperlinks to other pages on the website so that you can click on the link to see a different page.
 - Another thing that I learned on this assignment was how to use a header, main, and footer to set up a logical structure for the webpage.
 
 ## CSS
-
 - three ways to associate CSS with HTML
   1. `style` attribute of HTML element and explicitly assign declarations
   2. use the HTML `style` element to define CSS rules within the HTML (should appear in the head element)
@@ -161,7 +146,6 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - margin: considered external to actual styling of box, only represents whitespace
 
 ### Selectors
-
 - element type selector
   - element name selector (like `body`)
   - can use wildcard element name selector (`*`) to select all elements
@@ -178,7 +162,6 @@ GitHub assignment: I learned how to resolve merge conflicts!
 - pseudo selector: select based on positional relationships, mouse interactions, hyperlink visitation states, attributes)
 
 ### Declarations
-
 - specify a property and value to assign when the rule selector matches 1+ elements
   | Property | Value | Discussion |
   | ------------------ | ---------------------------------- | ------------------------------------------------------------------------------ |
@@ -230,19 +213,16 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - HSL: hue (position on 365 degree color wheel), saturation (how gray the color is), and light (how bright the color is) with optional opacity percentage (`hsl(180, 30%, 90%, 0.5)`)
 
 ### Fonts
-
 - font families: `serif` (small stroke attached to ends of major strokes), `sans-serif` (no extra strokes), `fixed` (all chars same size), `symbol` (non-lang chars like emojis or arrows)
 - importing fonts
   - use `@font-face` rule to provide font name and source location
   - instead of hosting font files on your server, you can load them from a font provider (easiest way is to use CSS import statement)
 
 ### Animation
-
 - add `animation-name` and `animation-duration` properties to the element you want to animate
 - create `@keyframes name { from{...} to{...}}`
 
 ### Responsive Design
-
 - common options for `display`: none (don't display), block (displays with width that fills its parent element), inline (displays with width only as large as its content), flex, grid
 - viewport meta tag
   - include this in head element of all HTML pages to tell the browser not to scale the page
@@ -253,13 +233,11 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - `@media (orientation: portrait) { ... }`
 
 #### grid
-
 - set `display` property of container element to `grid`
 - property `grid-template-columns` specifies the layout of grid columns
 - `grid-gap` sets the gap between grid items
 
 #### flex
-
 - helpful to partition application into areas that responsively move around as window resizes/orientation changes
 - set `display` property of container element to `flex`
 - choose orientation by setting `flex-direction` property
@@ -268,25 +246,21 @@ GitHub assignment: I learned how to resolve merge conflicts!
   - `flex: 0 80px` means that it will not grow and that its starting height is 80px
 
 ### Debugging
-
 - use Google Chrome debugger by right clicking on the HTML page element you want to debug and clicking `inspect` (use the Live Server extension in VS Code to pull it up in your browser)
 - can change the values right in the debugger to allow you to see how the property is affecting the page
 
 ### Frameworks
-
 - provide functions and components that commonly appear in web applications
 - bootstrap
   - integrate bootstrap into your web apps by adding the HTML link elements to your head element
   - after it is linked in your HTML files, you can use the components it provides
 
 ### Simon CSS Assignment
-
 - To show that a certain navigation bar item is selected, set the class of that link to "nav-link active" instead of just "nav-link"
 - When you need to set multiple aspects of the margin to different things, you can just do `margin: top right bottom left` instead of assiging each value of margin in a separate line
 - Using the `!important` rule overrides all previous styling rules for that property on that element
 
 ### UX Design
-
 - Tools to help choose a color palette: [Paletton](https://paletton.com/) and [Adobe](https://color.adobe.com/create/color-wheel)
 - Fonts
   - San Serif for buttons, navigation links, body text
@@ -298,24 +272,20 @@ GitHub assignment: I learned how to resolve merge conflicts!
 ## JavaScript
 
 ### JavaScript Console
-
 - log
   - `console.log('MSG');`
   - create formatted messages (i.e. `console.log('%s', 'MSG');`
   - specify CSS declarations too: `console.log(%c MSG', 'font-size:1.5em; color:green;');`
 - timers allow you to see how long a piece of code runs for
-
 ```
 console.time('NAME');
 // code here
 console.timeEnd('NAME');
 // OUTPUT: NAME: 349.49 ms
 ```
-
 - `count` is used to see how many times a block of code is called
 
 ### Type and Construct
-
 - declaring variables
   - `let` allows you to change the value of the variable
   - `const` causes an error if you try to change it
@@ -340,13 +310,11 @@ console.timeEnd('NAME');
   - `for of`: iterates over an iterable's property values (array, map, set, etc)
 
 ### String
-
 - can be surrounded by single or double quotes
 - can also use a backtick (\`), but this defines a string literal that may contain JavaScript that is evaluated in place and concatenated to the string (the replacement specifier is the dollar sign followed by a curly brace pair and everything in the braces is evaluated as js)
 - common functions: length, indexOf, split, startsWith, endsWith, toLowerCase
 
 ### Functions
-
 - first class objects: can be assigned a name, passed as a param, returned as a result, and referenced from an object or array like any other variable
 - parameters
   - if a parameter is not provided in the call, then that parameter has a value of `undefined` on execution
@@ -362,7 +330,6 @@ const add = function (a, b) {
 - inner functions: functions declared within other functions (modularize code without exposing private details)
 
 ### Arrow Functions
-
 - curly braces are optional
 - return keyword is optional if no curly braces are provided, but necessary if curly braces are used
 - inherit the `this` pointer from the scope it is created in, which makes a `closure` (allows a function to continue referencing its creation scope even after it has passed from that scope)
@@ -383,14 +350,12 @@ name => 'hello' + name;
 ```
 
 ### Arrays
-
 - a sequence of other objects and primitives
 - common functions: `push`, `pop`, `slice` (returns a sub-array), `sort`, `values` (creates an iterator to use with a `for of` loop), `find` (finds the first item satisfied by a test function), `forEach` (run a function on each item in the array), `reduce` (runs a function to reduce each item to a single item), `map` (run a function to map the array to a new array), `filter` (run a function to remove items), `every` (run a funcion to test if all items match), `some` (run a function to see if any items match)
 
 ### Objects and Classes
 
 #### objects
-
 - represents a collection of name value pairs (i.e. properties)
 - once an object is declared (with `new` operator) a property can be added by referencing the property name in an assignment
   - `obj.prop=VAL`
@@ -409,12 +374,10 @@ const obj = {
 - constructor: any function that returns an object; can be invoked with `new`
 
 #### classes
-
 - look similar to declaring an object, but have an explicit constructor and assumed function declarations
 - make properties and functions private by prefixing `#`
 
 ### JSON (JavaScript Object Notation)
-
 - provides a simple and effective way to share and store data
   | Type | Example |
   | ------- | ----------------------- |
@@ -427,7 +390,6 @@ const obj = {
 - convert to and from JSON with JSON.parse and JSON.stringify
 
 ### Regular Expressions
-
 - regex support built into js
 - can either use RegEx class constructor (`new RegEx('ab*', 'i')`) or regex literal (`/ab*/i`)
 - `/pattern/modifiers;`
@@ -436,14 +398,12 @@ const obj = {
   - m: multiline matching
 
 ### Rest and Spread
-
 - rest allows you to call a parameter with any number of parameters and it puts the parameters that aren't directly assigned to a parameter in an array
   - `function foo(param1, param2, ...others){...}`
 - spread is the opposite of rest, it takes an object that is iterable and expands it to a function's params
   - `func(...[1, 2])` this will call func with a parameter of 1 and parameter of 2
 
 ### Destructuring
-
 - pulls individual items out of an existing one
 - can be done with arrays or objects
 - with an array a: `[b, c] = a;` this line sets b to the first element and c to the second
@@ -453,14 +413,12 @@ const obj = {
   - can map names to new variables instead of just using original property names `const {a: count, b: type} = o;`
 
 ### Exceptions
-
 - supports exception handling with `try catch` and `throw` syntax
 - `finally` block also supported (always called when try block is exited, regardless if an exception was thrown)
 - restrict exceptions to truly exceptional situations
 - fallback pattern: put the normal feature path in try block and provide fallback implementation in catch block
 
 ### Scope
-
 - four different kinds
   1. global: visible to all code
   2. module: visible to all code running in a module
@@ -475,13 +433,11 @@ const obj = {
   - whatever variables are accessible when a function is created are available inside that function (even if you pass the function outside the scope of its orginal creation)
 
 ### Modules
-
 - have to explicitly export the objects you want to be visible outside the module: `export function alertDisplay(msg) { alert(msg); }`
 - import the exported function into another module using `import` : `import { alertDisplay } from './alert.js';`
 - modules can only be called from other modules
 
 ### DOM (Document Object Model)
-
 - object representation of the HTML elements the browser uses to render the display
 - provide access to the DOM through global var named `document` that points to the root element of the DOM
 - everything in an HTML documeent has a node in the DOM
@@ -522,7 +478,6 @@ const obj = {
   - common events: clipboard, focus, keyboard, mouse, text selection
 
 ### Promises
-
 - JavaScript executes as a single threaded application (only one piece of code is executing at the same time), but you can asynchronously execute code with promises
 - a promise object can be one of three states at any given time:
   1. pending: currently running asynchronously
@@ -541,7 +496,6 @@ const obj = {
   - while promises immediately begin to execute when the promise is created, observers form a pipeline that you can then pass an execution object into (makes observers reusable)
 
 ### Async/Await
-
 - `await` wraps the execution of a promise and removes need to chain functions
 - blocks until the promise state moves to fulfilled or throws an exception if it moves to rejected
 - await can only be called in the top level of JavaScript OR in a function defined with `async` keyword
@@ -549,13 +503,11 @@ const obj = {
   - turns any function into an asynch function so it can make asynch requests
 
 ### Simon JS Assignment
-
 - if the JS associated with an HTML page references HTML elements during initialization, the script needs to be located at the bottom of the HTML
 
 ## Web Services
 
 ### URL (uniform resource locator)
-
 - represents the location of a web source (could be a web page, image, JSON object, gaming session, etc)
 - follows this convention: `<scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>`
   - scheme: protocol required to ask for the resource (ex: https)
@@ -568,7 +520,6 @@ const obj = {
 - URI (Uniform Resource Identifier) can refer to eitheer a URL or URN
 
 ### Ports
-
 - allow a single device to support multiple protocols and different types of services
 - IANA (internet governing body) defines standard usage for port numbers
   - 0-1023: standard protocols
@@ -591,7 +542,6 @@ const obj = {
   - internally our server can have as many web services running as we want, but we have to make sure each one uses a different port
 
 ### HTTP
-
 - request syntax
   ```
   <verb> <url path, parameters, anchor> <version>
@@ -654,7 +604,6 @@ const obj = {
   - the client caches the cookie and returns it as a header in future requests
 
 ### SOP and CORS
-
 - Same Origin Policy (SOP) only allows JavaScript to make requests to a domain if it is the same domain the user is currently viewing
 - that helps with security, but makes it harder to build web applications
 - Cross Origin Resource Sharing (CORS) allows the client to specify the origin of a request and then let the server respond with which origins are allowed
@@ -662,13 +611,11 @@ const obj = {
 - to test if you can use a service before including it in your application, make sure it responds with \* or your calling origin
 
 ### Fetch
-
 - fetch API is preferred way to make HTTP requests
 - basic usage takes a URL and returns a promise; the `then` function takes a callback function that is called asynchronously when the requested content is obtained
 - if the returned content is of the type `application/json` then you can use `json` function on the response object to convert it to a JS object
 
 ### Service Design
-
 - model and sequence diagrams: model the application's primary objects and interactions of the objects and avoid introducing a model that is focused on programming constructs and infrastructure
 - leveraging HTTP: since web services are usually provided over HTTP, it influences the design of the service; take advantage of this and other technologies instead of recreating the functionality they provide
 - endpoints
@@ -706,7 +653,6 @@ const obj = {
     - some downsides are that the client now has significant power to consume server resources and that it is difficult for the server to implement authorization rights to data
 
 ### Node.js
-
 - first successful application for deploying JavaScript outside of a browser which means that JavaScript can power your entire technology stack
 - loading a package using Node.js requires two steps: install the package locally on your machine using NPM (node package manager) and then include `require` statement in code that references the package name
 - before you can use NPM to install packages, you have to initialize the code to use it: create a directory that will contain your JS and run `nmp init`, then it will ask you questions about the project (to accept defaults, run `npm init -y`)
@@ -725,7 +671,6 @@ const obj = {
   6. run the code with `node NAME.js`
 
 ### Express
-
 - Node package that provides support for routing requests for service endpoints, manipulating HTTP requests with JSON body content, generating HTTP responses, and using middleware to add functionality
 - create an Express application by installing Express package, calling express constructor, and listening for HTTP requests on a desired port
 - defining routes
@@ -836,7 +781,7 @@ const obj = {
       - set env variables for production environment by modifying the /etc/environment file after sshing into your production server
       - set env variables for development environment by adding the same variables into the ~/.zprofile file
 
-### Simon DB 
+#### Simon DB Assignment
 - I LEARNED THAT YOU SHOULD USE deployService.sh NOT deployFiles.sh :smiling_face_with_tear:
 - I think that it is so nice that Mongo will create the database/collection you are adding to if it doesn't already exist: very helpful!!
 
@@ -856,10 +801,28 @@ const obj = {
 6. hash the passwords before storing 
 7. pass auth tokens to browser to the endpoints
 
-#### Simon Login
+#### Simon Login Assignment
 - secureApiRouter wraps the exisiting router and verifies the credentials for endpoints before passing the request to endpoints that require authorization (instead of apiRouter.get(...), use secureApiRouter.get(...))
 - secure cookie to store the auth token for the user
   - `secure`: requires HTTP to be used when sending cookie back to server
   - `httpOnly`: tells the browser that JS running on the browser can't read the cookie
   - `sameSite`: only returns the cookie to the domain that generated it
 - created service endpoints to store credentials and update the auth cookie: `authCreate`, `authLogin`, `authLogout`, `userGet`
+
+### WebSocket
+- fully duplexed: after the initial connection by the client using vanilla HTTP, upgrade to WebSocket by server which makes the relationship a peer to peer connection and either party can send data efficiently at any time
+- still only between two parties, so to allow a conversation between a group of users the server has to act as the intermediary (the peers connect to the server and the server forwards the messages among the peers)
+- create a WebSocket by specifying the port you want to communicate on 
+  - then send messages with `send` and register a callback using `onmessage`
+- specifying a port when you create the WebSocketServer tells the server to listen for HTTP connections on that port and automatically upgrade them to a WebSocket connection if the request has the `connection: Upgrade` header
+
+#### Debugging WebSocket
+- debug the server in VSCode
+- debug the client in Chrome
+
+#### [WebSocket Chat] (https://github.com/webprogramming260/.github/blob/main/profile/webServices/webSocket/chat.md)
+
+#### Simon WebSocket Assignment
+- `npm install ws` to install WebSocket package
+- attach a WebSocket listener to the HTTP server that was created earlier (this is done in the PeerProxy class)
+- play.js file uses WebSocket in the functions for connecting, broadcasting, receiving, and displaying events 
