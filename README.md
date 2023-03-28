@@ -820,7 +820,7 @@ const obj = {
 - debug the server in VSCode
 - debug the client in Chrome
 
-#### [WebSocket Chat] (https://github.com/webprogramming260/.github/blob/main/profile/webServices/webSocket/chat.md)
+#### [WebSocket Chat](https://github.com/webprogramming260/.github/blob/main/profile/webServices/webSocket/chat.md)
 
 #### Simon WebSocket Assignment
 - `npm install ws` to install WebSocket package
