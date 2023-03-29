@@ -826,3 +826,18 @@ const obj = {
 - `npm install ws` to install WebSocket package
 - attach a WebSocket listener to the HTTP server that was created earlier (this is done in the PeerProxy class)
 - play.js file uses WebSocket in the functions for connecting, broadcasting, receiving, and displaying events 
+
+## Web Frameworks
+
+### React
+- abstracts HTML into a JavaScript variate called JSX (this is converted to valid HTML and JavaScript using a preprocessor called Babel)
+
+#### Components
+- `render`: whatever is returned from this function is inserted into the component HTML element
+- properties: allows you to pass information to components (they receive them in their constructor and can deisplay the properties when it renders)
+- state
+  - call the React.useState hook function
+  - returns a variable that contains the current state and a function to update the state 
+  - can use function style and class style (though function style is preferred)
+    - in class style: properties are loaded in through the constructor and the sate is set using a setState function on the component object
+- whenever a component's state or properties change, the render function for the component is called, as well as the render functions for all of its dependent components
