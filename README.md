@@ -898,7 +898,7 @@ const obj = {
   - remove testing and performance monitoring
     - `npm uninstall @testing-library/jest-dom @testing-library/react @testing-library/user-event`
     - `rm src/setupTests.js src/App.test.js`
-    - ```
+    ```
     npm uninstall web-vitals
     rm src/reportWebVitals.js
     ```
