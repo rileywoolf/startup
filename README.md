@@ -841,3 +841,56 @@ const obj = {
   - can use function style and class style (though function style is preferred)
     - in class style: properties are loaded in through the constructor and the sate is set using a setState function on the component object
 - whenever a component's state or properties change, the render function for the component is called, as well as the render functions for all of its dependent components
+
+#### Hooks
+- allow React function style components to be able to do everything that a class style component can do (and more)
+- `useEffect`
+  - allows you to represent lifecycle events (like run a function everytime the component finishes rendering)
+  - useful when you want to create side effects for things like tracking when a component is displayed/hidden or creating/disposing of resources
+  - hook dependencies
+    - control what triggers the hook by specifying dependencies by passing in an array of dependencies as second parameter to useEffect call
+    - passing in an empty array as the hook dependency then it is only called when the component is first rendered
+- to ensure that hooks are always called in the same order, hooks can only be used in function style components and must be called at the top scope of the function
+
+#### Toolchains
+- abstract away some of the complexity of a web program with a series of tools
+- common pieces in a web application chain
+  - code repository: store versioned code in a shared location (we use GitHub)
+  - linter: removes/warns of non-idiomatic code usage
+  - prettier: formats code according to a shared standard
+  - transpiler: compiles code into different format (ex: JSX to JavaScript) (we use Babel)
+  - polyfill: generates code that is backward compatible for old browser versions that don't support latest standards (we use WebPack)
+  - bundler: packages code into bundles for delivery to browser (enables compatibility and performance) (we use WebPack)
+  - minifier: removes whitespace and renames variables to make code smaller and easier to deploy (we use WebPack)
+  - testing: automated tests to ensure correctness
+  - deployment: automated packaging and delivery of code from dev environment to production (we use a bash script)
+
+#### React CLI 
+- Create React App Getting Started: inside the project:
+  - `npm start` or `yarn start` runs the app in development mode, the page automatically reloads if you make changes to the code, see build errors and lint warnings in the console
+  - `npm test` or `yarn test` runs the test watcher in interactive mode, runs tests related to files changed since last commit
+  - `npm run build` or `yarn build` builds app for production to the build folder, correctly bundles React in production mode and optimizes the build for best performance
+- NPX is essentially a shortcut for `NPM install` and `NPM start`
+- `npx create-react-app test-react` creates a new React application based on a standard template 
+  - at high level: 
+    - updates package-json to include necessary NPM packages
+    - creates public/index.html as entry point to load the application
+    - creates src/index.js to initialize React application
+    - creates src/app.js to provide top level React component
+  - generated code: index.html is loaded (contains basic metadata for app), actual content injected at runtime based on index.js, the code there causes App component from app.js to be run
+  - at basic level always do the following when modifying generated project
+    - replace icon files with your own icons
+    - modify manifest.json and package.json to contain app name
+    - modify README to describe your app
+    - modify index.html to contain proper title and description metadata
+  - remove testing and performance monitoring
+    - `npm uninstall @testing-library/jest-dom @testing-library/react @testing-library/user-event`
+    - `rm src/setupTests.js src/App.test.js`
+    - ```
+    npm uninstall web-vitals
+    rm src/reportWebVitals.js
+    ```
+    - remove refs to reportWebVitals from index.js
+- consider naming the .js files to .jsx
+
+
