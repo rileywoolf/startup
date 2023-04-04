@@ -892,5 +892,3 @@ const obj = {
     ```
     - remove refs to reportWebVitals from index.js
 - consider naming the .js files to .jsx
-
-
