@@ -838,9 +838,21 @@ const obj = {
 - state
   - call the React.useState hook function
   - returns a variable that contains the current state and a function to update the state 
+  - `const [text, updateText] = React.useState("");`
   - can use function style and class style (though function style is preferred)
     - in class style: properties are loaded in through the constructor and the sate is set using a setState function on the component object
 - whenever a component's state or properties change, the render function for the component is called, as well as the render functions for all of its dependent components
+
+#### Reactivity 
+- architectural foundation of React is to make the UI react to changes in user input or data
+- reactivity is enabled with three major pieces of a React component: props, state, render
+- React monitors the component's state and prop objects and calls the component's render function when it detects any of the objects has changed
+- be aware: `updateState` happens asynchronously, so you won't be able to use the updated value in the line right after calling updateState
+- `const onChange = (e) => { updateText(e.target.value); };`
+
+#### tic-tac-toe tutorial
+-  A JSX element is a combination of JavaScript code and HTML tags that describes what you’d like to display.
+-  When you want to collect data from multiple children (or have two child components communicate with each other), declare the shared state in the parent component instead. This allows the parent to pass the state back down to children through props, keeping the children components in sync with one another and with their parent. 
 
 #### Hooks
 - allow React function style components to be able to do everything that a class style component can do (and more)
