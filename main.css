@@ -13,7 +13,7 @@ footer a {
 }
 
 h2 {
-  margin-bottom: 40px !important;
+  margin-bottom: 20px !important;
 }
 
 header {
@@ -59,12 +59,17 @@ menu .nav-item {
   border-radius: 25px;
 }
 
+.curr-header {
+  font-size: large;
+  font-weight: bold;
+}
+
 .current-item {
   font-size: large;
   background-color: #d9e1ff;
   padding: 10px;
   border-radius: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
 }
@@ -73,9 +78,8 @@ menu .nav-item {
   flex: 1;
   background-color: #f2f5ff;
   padding: 20px;
-  padding-bottom: 40px;
   border-radius: 25px;
-  margin: 0 20px 0 20px;
+  margin: 40px 20px 0 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -119,6 +123,31 @@ menu .nav-item {
   padding-left: 1em;
 }
 
+.post-current {
+  font-size: large;
+  background-color: #d9e1ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-review {
+  font-size: large;
+  background-color: #d9e1ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-top {
+  display: flex;
+  flex-direction: row;
+}
+
 .rating {
   font-size: 25px;
 }
@@ -127,7 +156,10 @@ menu .nav-item {
   flex: 3;
   margin-left: 75px;
   background-color: #f2f5ff;
+  margin: 40px 10px 0px 10px;
   padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 0px;
   border-radius: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -140,14 +172,29 @@ menu .nav-item {
   justify-content: space-evenly;
 }
 
+.review-button {
+  margin-top: 20px;
+  margin-right: 20px;
+  float: right;
+}
+
 .review-container {
   display: grid !important;
   grid-template-columns: auto auto;
-  margin: 10px;
+  margin: 0px 10px 5px 10px;
   row-gap: 15px;
   background-color: #d9e1ff;
   padding: 10px;
+  padding-bottom: 0px;
   border-radius: 10px;
+}
+
+.r-button {
+  margin-left: 130px !important;
+}
+
+.r-item {
+  margin: 5px 50px 10px 0px;
 }
 
 .slogan {
@@ -177,4 +224,13 @@ menu .nav-item {
   main {
     flex: 1 100vh;
   }
+}
+
+#b-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#b-author {
+  margin-bottom: 10px;
 }

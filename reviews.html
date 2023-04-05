@@ -62,17 +62,7 @@
           <div class="rating">RATING</div>
           <div class="review-text">REVIEW</div>
           <div class="username">USERNAME</div>
-        </div>
-
-         <div class="review-container">
-          <div class="review-heading">
-            <h5 class="book-title">TITLE</h5>
-            <h6 class="book-author">AUTHOR</h6>
-          </div>
-          <div class="rating">RATING</div>
-          <div class="review-text">REVIEW</div>
-          <div class="username">USERNAME</div>
-        </div>
+        </div>  
 
         <div class="review-container">
           <div class="review-heading">
@@ -82,7 +72,35 @@
           <div class="rating">RATING</div>
           <div class="review-text">REVIEW</div>
           <div class="username">USERNAME</div>
-        </div>
+        </div>  
+
+        <div class="review-container">
+          <div class="review-heading">
+            <h5 class="book-title">TITLE</h5>
+            <h6 class="book-author">AUTHOR</h6>
+          </div>
+          <div class="rating">RATING</div>
+          <div class="review-text">REVIEW</div>
+          <div class="username">USERNAME</div>
+        </div>  
+
+        <div class="form-outline mb-4 post-review">
+          <div class="review-top">
+            <input type="text" class="r-item" id="r-title" placeholder="title"/>
+            <input type="text" class="r-item" id="r-author" placeholder="author"/>
+            <span class="r-item">
+              <label for="num-stars">Your rating (out of 5 stars):</label>
+              <input type="number" id="num-stars" name="num-stars" min="0" max="5"/>
+            </span>
+            <button
+              type="submit"
+              class="btn btn-block mb-4 text-light r-item r-button"
+              style="background-color: #9ea3ba"
+              onclick="postReview()">
+              POST REVIEW</button>
+          </div>
+          <textarea id="review-text" rows="4" placeholder="tell us how you feel about it"></textarea>
+        </div>          
       </div>
       <div class="currently-reading">
         <h2>currently reading</h2>
@@ -108,6 +126,19 @@
           <span class="curr-username">@username</span>
           <span class="curr-title">BOOK TITLE</span>
           <span class="curr-author">AUTHOR</span>
+        </div>
+
+        <div class="form-outline mb-4 post-current" >
+          <span class="curr-header">What are you reading?</span>
+          <input type="text" id="b-title" placeholder="book title"/>
+          <input type="text" id="b-author" placeholder="book author"/>
+          <button 
+            type="submit" 
+            class="btn btn-block mb-4 text-light"
+            style="background-color: #9ea3ba"
+            onclick="postCurrently()">
+            SHARE
+          </button>
         </div>
       
     </main>

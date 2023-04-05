@@ -113,3 +113,11 @@ class CurrentlyReading {
 }
 
 const reviewPage = new ReviewPage();
+
+function postCurrently() {
+  console.log("POST CURRENTLY");
+}
+
+function postReview() {
+  console.log("POST REVIEW");
+}
