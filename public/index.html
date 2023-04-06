@@ -6,9 +6,6 @@
     <title>bibliobibuli</title>
     <link rel="icon" href="resources/book.png" />
 
-    <!-- connect the html to the js file-->
-    <script src="login.js"></script>
-
     <link rel="stylesheet" href="main.css" />
     <!-- Include bootstrap CSS framework -->
     <link
@@ -35,12 +32,6 @@
         <menu class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" href="index.html">home</a>
-          </li>
-          <li class="nav-item" id="authedControls" style="display: none">
-            <a class="nav-link" href="reviews.html">reviews</a>
-          </li>
-          <li class="nav-item" id="authedControls" style="display: none">
-            <a class="nav-link" href="about.html">about</a>
           </li>
         </menu>
         <!-- makes it so the header is same height on all pages -->
@@ -126,7 +117,6 @@
 
       <!-- Displayed when needing authentication. -->
       <div class="login" id="loginControls" style="display:display">
-        <form method="get" action="reviews.html">
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="text" id="name" placeholder="username" />
@@ -138,7 +128,7 @@
           <!-- Submit button -->
           <div class="submit">
             <button
-              type="submit"
+              type="button"
               class="btn btn-block mb-4 text-light"
               style="background-color: #9ea3ba"
               onclick="login()"
@@ -146,7 +136,7 @@
               Sign in
             </button>
             <button
-              type="submit"
+              type="button"
               class="btn btn-block mb-4 text-light"
               style="background-color: #9ea3ba"
               onclick="register()"
@@ -154,13 +144,12 @@
               Register
             </button>
           </div>
-        </form>
       </div>
 
       <!-- Displayed when logged in. -->
       <div class="login" id="authedControls" style="display:none">
-        <div id="user"></div>
-        <button type="button" class="btn btn-secondary" onclick="logout()">
+        <div>Logged in as <span id="user"></span></div>
+        <button type="button" class="btn btn-secondary" onclick="logout()" style="margin-top: 10px">
           Logout
         </button>
       </div>
@@ -192,5 +181,11 @@
         >
       </div>
     </footer>
+    <script src="login.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -41,14 +41,20 @@ async function addUser(username, password) {
 
 function getCurrently() {
     const query = {};
-    const options = { limit: 4 };
+    const options = { 
+        limit: 4, 
+        sort: { _id: -1 },
+    };
     const cursor = currentlyCollection.find(query, options);
     return cursor.toArray();
 }
 
 function getReviews() {
     const query = {};
-    const options = { limit: 3 };
+    const options = { 
+        limit: 3 ,
+        sort: { _id: -1 },
+    };
     const cursor = reviewCollection.find(query, options);
     return cursor.toArray();
 }

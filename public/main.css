@@ -197,6 +197,10 @@ menu .nav-item {
   border-radius: 10px;
 }
 
+.review-text {
+  width: 100ch;
+}
+
 .r-button {
   margin-left: 130px !important;
 }
@@ -241,4 +245,10 @@ menu .nav-item {
 
 #b-author {
   margin-bottom: 10px;
+}
+
+#messages {
+  margin-left: 20px;
+  margin-bottom: 0px;
+  padding: 0px;
 }

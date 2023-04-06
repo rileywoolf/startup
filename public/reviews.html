@@ -52,55 +52,58 @@
     </header>
 
     <main>
-      <div class="reviews">
-        <h2>reviews</h2>
-        <div class="review-container">
-          <div class="review-heading">
-            <h5 class="book-title">TITLE</h5>
-            <h6 class="book-author">AUTHOR</h6>
-          </div>
-          <div class="rating">RATING</div>
-          <div class="review-text">REVIEW</div>
-          <div class="username">USERNAME</div>
-        </div>  
-
-        <div class="review-container">
-          <div class="review-heading">
-            <h5 class="book-title">TITLE</h5>
-            <h6 class="book-author">AUTHOR</h6>
-          </div>
-          <div class="rating">RATING</div>
-          <div class="review-text">REVIEW</div>
-          <div class="username">USERNAME</div>
-        </div>  
-
-        <div class="review-container">
-          <div class="review-heading">
-            <h5 class="book-title">TITLE</h5>
-            <h6 class="book-author">AUTHOR</h6>
-          </div>
-          <div class="rating">RATING</div>
-          <div class="review-text">REVIEW</div>
-          <div class="username">USERNAME</div>
-        </div>  
-
-        <div class="form-outline mb-4 post-review">
-          <div class="review-top">
-            <input type="text" class="r-item" id="r-title" placeholder="title"/>
-            <input type="text" class="r-item" id="r-author" placeholder="author"/>
-            <span class="r-item">
-              <label for="num-stars">Your rating (out of 5 stars):</label>
-              <input type="number" id="r-stars" name="num-stars" min="0" max="5"/>
-            </span>
-            <button
-              type="submit"
-              class="btn btn-block mb-4 text-light r-item r-button"
-              style="background-color: #9ea3ba"
-              onclick="postReview()">
-              POST REVIEW</button>
-          </div>
-          <textarea id="r-text" rows="4" placeholder="tell us how you feel about it"></textarea>
-        </div>          
+      <div id="main-body">
+        <div id="messages"></div>
+        <div class="reviews" style="padding-bottom:10px">
+          <h2>reviews</h2>
+          <div class="review-container">
+            <div class="review-heading">
+              <h5 class="book-title">TITLE</h5>
+              <h6 class="book-author">AUTHOR</h6>
+            </div>
+            <div class="rating">RATING</div>
+            <div class="review-text">REVIEW</div>
+            <div class="username">USERNAME</div>
+          </div>  
+  
+          <div class="review-container">
+            <div class="review-heading">
+              <h5 class="book-title">TITLE</h5>
+              <h6 class="book-author">AUTHOR</h6>
+            </div>
+            <div class="rating">RATING</div>
+            <div class="review-text">REVIEW</div>
+            <div class="username">USERNAME</div>
+          </div>  
+  
+          <div class="review-container">
+            <div class="review-heading">
+              <h5 class="book-title">TITLE</h5>
+              <h6 class="book-author">AUTHOR</h6>
+            </div>
+            <div class="rating">RATING</div>
+            <div class="review-text">REVIEW</div>
+            <div class="username">USERNAME</div>
+          </div>  
+  
+          <div class="form-outline mb-4 post-review">
+            <div class="review-top">
+              <input type="text" class="r-item" id="r-title" placeholder="title"/>
+              <input type="text" class="r-item" id="r-author" placeholder="author"/>
+              <span class="r-item">
+                <label for="num-stars">Your rating (out of 5 stars):</label>
+                <input type="number" id="r-stars" name="num-stars" min="0" max="5"/>
+              </span>
+              <button
+                type="submit"
+                class="btn btn-block mb-4 text-light r-item r-button"
+                style="background-color: #9ea3ba"
+                onclick="reviewPage.postReview()">
+                POST REVIEW</button>
+            </div>
+            <textarea id="r-text" rows="4" placeholder="tell us how you feel about it" maxlength="420"></textarea>
+          </div>          
+        </div>
       </div>
       <div class="currently-reading">
         <h2>currently reading</h2>
@@ -136,11 +139,11 @@
             type="submit" 
             class="btn btn-block mb-4 text-light"
             style="background-color: #9ea3ba"
-            onclick="postCurrently()">
+            onclick="reviewPage.postCurrently()">
             SHARE
           </button>
         </form>
-      
+    </div>      
     </main>
 
     <footer class="text-dark text-muted">

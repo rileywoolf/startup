@@ -1,6 +1,7 @@
 class ReviewPage {
   reviews;
   currentlyReading;
+  socket;
 
   constructor() {
     this.reviews = [];
@@ -35,11 +36,94 @@ class ReviewPage {
 
     const userNameEl = document.querySelector(".user-name");
     userNameEl.textContent = this.getUserName();
+
+    this.configureWebSocket();
   }
 
   getUserName() {
     return localStorage.getItem("userName") ?? "Unknown User";
   }
+
+  async postCurrently() {
+    const titleEl = document.querySelector("#b-title");
+    const authorEl = document.querySelector("#b-author")
+  
+    const username = localStorage.getItem("userName") ?? "Unknown User";
+  
+    const newCurrently = { username: username, title: titleEl.value, author: authorEl.value };
+    try {
+      const response = await fetch('/api/postcurrent', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newCurrently),
+      });
+      const currently = await response.json();
+      localStorage.setItem("currently", JSON.stringify(currently));
+  
+      // Let others know what is currently being read.
+      this.broadcastEvent(username, titleEl.value);
+  
+      // Clear out the values in the form. 
+      titleEl.value = '';
+      authorEl.value = '';
+    } catch {
+      console.log("POST CURRENTLY ERROR");
+    }
+  }
+
+  async postReview() {
+    const titleEl = document.querySelector("#r-title");
+    const authorEl = document.querySelector("#r-author");
+    const starsEl = document.querySelector("#r-stars");
+    const textEl = document.querySelector("#r-text");
+    
+    const username = localStorage.getItem("userName") ?? "Unknown User";
+    const newReview = { username: username, title: titleEl.value, author: authorEl.value,
+    stars: starsEl.value, text: textEl.value };
+  
+    try {
+      const response = await fetch('/api/postreview', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newReview),
+      });
+  
+      // Clear out the values in the form. 
+      titleEl.value = '';
+      authorEl.value = '';
+      starsEl.value = '';
+      textEl.value = '';
+      
+      const reviews = await response.json();
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+    } catch {
+      console.log("POST REVIEW ERROR");
+    }
+  }
+
+  // Functionality for peer communication using WebSocket
+configureWebSocket() {
+  const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+  this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+  this.socket.onmessage = async (event) => {
+    const msg = JSON.parse(await event.data.text());
+    this.displayMsg(msg.from, msg.title);
+  }
+}
+
+displayMsg(from, msg) {
+  const chatText = document.querySelector('#messages');
+  chatText.innerHTML =
+    `<div class="event">${from} is currently reading ${msg}</div>` + chatText.innerHTML;
+}
+
+broadcastEvent(from, title) {
+  const event = {
+    from: from,
+    title: title,
+  };
+  this.socket.send(JSON.stringify(event));
+}
 }
 
 class Review {
@@ -127,58 +211,3 @@ class CurrentlyReading {
 }
 
 const reviewPage = new ReviewPage();
-
-async function postCurrently() {
-  const titleEl = document.querySelector("#b-title");
-  const authorEl = document.querySelector("#b-author")
-
-  const username = localStorage.getItem("userName") ?? "Unknown User";
-
-  const newCurrently = { username: username, title: titleEl.value, author: authorEl.value };
-  try {
-    const response = await fetch('/api/postcurrent', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newCurrently),
-    });
-
-    // Clear out the values in the form. 
-    titleEl.value = '';
-    authorEl.value = '';
-
-    const currently = await response.json();
-    localStorage.setItem("currently", JSON.stringify(currently));
-  } catch {
-    console.log("POST CURRENTLY ERROR");
-  }
-}
-
-async function postReview() {
-  const titleEl = document.querySelector("#r-title");
-  const authorEl = document.querySelector("#r-author");
-  const starsEl = document.querySelector("#r-stars");
-  const textEl = document.querySelector("#r-text");
-  
-  const username = localStorage.getItem("userName") ?? "Unknown User";
-  const newReview = { username: username, title: titleEl.value, author: authorEl.value,
-  stars: starsEl.value, text: textEl.value };
-
-  try {
-    const response = await fetch('/api/postreview', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newReview),
-    });
-
-    // Clear out the values in the form. 
-    titleEl.value = '';
-    authorEl.value = '';
-    starsEl.value = '';
-    textEl.value = '';
-    
-    const reviews = await response.json();
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-  } catch {
-    console.log("POST REVIEW ERROR");
-  }
-}
