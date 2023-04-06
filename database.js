@@ -1,4 +1,6 @@
 const { MongoClient } = require('mongodb');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 
 const userName = process.env.MONGOUSER;
 const password = process.env.MONGOPASSWORD;
@@ -11,6 +13,7 @@ if (!userName) {
 const url = `mongodb+srv://${userName}:${password}@${hostname}`;
 
 const client = new MongoClient(url);
+const userCollection = client.db('bibliobibuli').collection('user');
 const currentlyCollection = client.db('bibliobibuli').collection('currently');
 const reviewCollection = client.db('bibliobibuli').collection('reviews');
 
@@ -18,15 +21,29 @@ function addCurrently(currently) {
     currentlyCollection.insertOne(currently);
 }
 
+function addReview(review) {
+    reviewCollection.insertOne(review);
+}
+
+async function addUser(username, password) {
+    // Hash the password before we insert it into the database
+    const passwordHash = await bcrypt.hash(password, 10);
+  
+    const user = {
+      username: username,
+      password: passwordHash,
+      token: uuid.v4(),
+    };
+    await userCollection.insertOne(user);
+  
+    return user;
+  }
+
 function getCurrently() {
     const query = {};
     const options = { limit: 4 };
     const cursor = currentlyCollection.find(query, options);
     return cursor.toArray();
-}
-
-function addReview(review) {
-    reviewCollection.insertOne(review);
 }
 
 function getReviews() {
@@ -36,4 +53,20 @@ function getReviews() {
     return cursor.toArray();
 }
 
-module.exports = {addCurrently, addReview, getCurrently, getReviews};
+function getUser(username) {
+    return userCollection.findOne({ username: username });
+}
+
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+}
+
+module.exports = {
+    addCurrently,
+    addReview,
+    addUser,
+    getCurrently,
+    getReviews,
+    getUser,
+    getUserByToken,
+};

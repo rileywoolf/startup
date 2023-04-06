@@ -36,10 +36,10 @@
           <li class="nav-item">
             <a class="nav-link active" href="index.html">home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="authedControls" style="display: none">
             <a class="nav-link" href="reviews.html">reviews</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="authedControls" style="display: none">
             <a class="nav-link" href="about.html">about</a>
           </li>
         </menu>
@@ -123,11 +123,17 @@
           />
         </div>
       </div>
-      <div class="login">
+
+      <!-- Displayed when needing authentication. -->
+      <div class="login" id="loginControls" style="display:display">
         <form method="get" action="reviews.html">
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="text" id="name" placeholder="your username here" />
+            <input type="text" id="name" placeholder="username" />
+          </div>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="password" id="password" placeholder="password" />
           </div>
           <!-- Submit button -->
           <div class="submit">
@@ -139,8 +145,42 @@
             >
               Sign in
             </button>
+            <button
+              type="submit"
+              class="btn btn-block mb-4 text-light"
+              style="background-color: #9ea3ba"
+              onclick="register()"
+            >
+              Register
+            </button>
           </div>
         </form>
+      </div>
+
+      <!-- Displayed when logged in. -->
+      <div class="login" id="authedControls" style="display:none">
+        <div id="user"></div>
+        <button type="button" class="btn btn-secondary" onclick="logout()">
+          Logout
+        </button>
+      </div>
+
+      <!-- Error dialog -->
+      <div class="modal fade" id="msgModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-dark">
+            <div class="modal-body">error message here</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
