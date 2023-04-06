@@ -143,6 +143,14 @@ menu .nav-item {
   flex-direction: column;
 }
 
+.quote-box {
+  width: 550px;
+  background-color: #f2f5ff;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 25px;
+}
+
 .review-top {
   display: flex;
   flex-direction: row;
