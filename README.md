@@ -904,3 +904,86 @@ const obj = {
     ```
     - remove refs to reportWebVitals from index.js
 - consider naming the .js files to .jsx
+
+#### Router
+- web framework router is essential for single page applications (which only loads one HTML page and uses JavaScript to manipulate the DOM, giving the appearance of multiple pages)
+- no standard router package for React, but we will use react-router-dom Version 6
+- basic implementation: 
+  - `BrowserRouter` component that encapsulates entire application 
+  - `Link` component captures user navigation events and modifies what is rendered by the `Routes` componenet by matching the to and path attributes
+- React Router DOM tutorial
+  - install library: `npm i react-router-dom`
+  - three things to do to use React Router
+  1. setup your router (import specific router (`BrowserRouter` for web) and wrap entire application in that router)
+  2. define your routes (can be as simple as defining a single `Route` component for each route of application and then putting those components in a single `Routes` component)
+  3. handle navigation (instead of navigating with anchor tags, uses custom `Link` component to handle navigation)
+    - just a wrapper around an anchor tag to ensure routing is correct
+    - use `to` prop to set URL instead of `href`
+  - advanced routing defs
+    - dynamic routing
+      - has a dynamic parameter (ex: `<Route path="books/:id" element={<Book />} />`)
+      - this means any URL with /book/ANYTHING HERE will match
+      - `useParams` hook allows you to access the dynamic value in your custom component 
+    - routing priority
+      - React Router uses an algorithm to decide which route is most likely the one you want when multiple routes match (tries to choose the most specific route that matches the URL)
+      - ex. URL is /books/new, which matches both /books/:id and /books/new, but you probably want the latter option
+    - nested routes
+      - make a parent `Route` with path prop set to shared path for all its child routes and then put all child `Route` components inside that parent `Route`
+      - if you pass an `element` prop to the parent `Route` it renders that component for every single child Route 
+      - `Outlet` component is essentially a placeholder component that will render the current page's content (it can take a `context` prop which allows you to use the `useOutletContext` hook to access the value for the context)
+    - multiple routes
+      - separate routes: can render different sections of content that both depend on the URL of the application (like a sidebar and main page that should show specific content based on the URL)
+      - can hardcode the `location` prop so that no matter what the URL is, the Routes component will match its Route as if the URL was what it was looking for
+    - `useRoutes` hook
+      - can use JavaScript to define routes instead of JSX 
+
+#### Simon React
+- steps to convert Simon to React
+  1. reorganize Simon
+    - want the React code in the `src` directory and the service code in a `service` directory
+    - delete `node_modules` from simon directory
+    - move service code (package.json, package-lock.json, index.js, database.js, and peerProxy.js) to service subdirectory
+    - run `npm install` in the `service` directory to get the NPM packages for the service
+  2. commit AT THIS POINT to Git to give a starting place for conversion to React (that way you don't have to start over completely)
+  3. create template React application (`npx create-react-app template-react`) to get the basic configuration and template React app code
+  4. clean up the template code
+    - uninstall the unneccessary NPM packages (like stats and test)
+    - delete unneeded create-react-app files (the images)
+    - rename the js files to have `jsx` extension
+    - replace the favicon.ico with the Simon icon
+    - update `manifest.json` to represent Simon
+    - clean up the `index.html` file to have proper fields for Simon
+  5. move template files to Simon
+    - copy the generated files from `template-react` dir to simon dir
+    - run `npm install` in simon dir to get all NPM packages React uses
+  6. convert to React bootstrap
+    - import the NPM package: `npm install bootstrap react-bootstrap`
+    - now you can import this like any other CSS file: `import 'bootstrap/dist/css/bootstrap.min.css';`
+  7. populate `App.jsx`
+    - move header and footer HTML into the render function for the app
+    - because it is now in JSX (not HTML), rename class attribute to className 
+    - move `main.css` content into a file named `app.css` and import it into the app.jsx file: import `./app.css`
+  8. create view components
+    - create React component files to represent each of the app views (login.jsx, play.jsx, scores.jsx, and about.jsx) 
+    - put each of the components in a separate dir (like src/login/login.jsx) to keep component files together
+  9. create the router
+    - install the package: `npm install react-router-dom`
+    - include the router component in index.jsx and app.jsx files
+  10. convert to React components
+    - basic steps to convert original HTML pages to a component 
+      - copy HTML over and put it as the return value of the component
+      - rename `class` attr to `className`
+      - delete header and footer HTML (we already added it in app.jsx) 
+      - copy JavaScript over and turn the functions into inner functions of the React component
+      - create a file for the CSS and use an import for it in the component's jsx file
+      - create React state variables for each of the stateful objects in the component
+      - replace DOM query selectors with React state variables
+      - move state up to parent components as needed (like authentication state or username state)
+      - create child components as needed (SimonGame and SimonButton, for example)
+  11. set up to debug
+    - create a file called `.env.local` in the root of the project and insert `PORT=3001`
+    - modify package.json to include `"proxy": "http://localhost:3000"`
+    - change front-end WebSocket initialization in gameNotifier.js to explicitly use port 3000
+  12. refactor play.jsx into simonGame.jsx, simonButton.jsx and players.jsx
+  13. refactor components to take advantage of React-specific functionality and to create sub-components
+  14. move webSocket code from play.jsx to gameNotifier.js
